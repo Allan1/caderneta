@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PERMISSION=770
+PERMISSION=777
 
 if [ "$#" -ne 3 ] && [ "$#" -ne 2 ] && [ "$#" -ne 1 ]; then
   echo ""
