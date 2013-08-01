@@ -4,12 +4,13 @@
       <meta http-equiv="Content-type" content="text/html;charset=UTF-8"></meta>
       <meta charset="UTF-8"></meta>
         <?php echo $this->Html->charset(); ?>
-        <title>Sigad Acesso</title>
+        <title>Template</title>
         <?php
           echo $this->Html->meta('icon');
 
-          echo $this->Html->css('bootstrap');
-
+          echo $this->Html->css('bootstrap.min');
+          echo $this->Html->script('jquery-1.9.1.min');
+          echo $this->Html->script('bootstrap.min');
           echo $this->fetch('meta');
           echo $this->fetch('css');
           echo $this->fetch('script');
@@ -27,7 +28,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                  <a class="brand" href="<?php echo $this->webroot;?>"><?php ?></a>
+                  <a class="brand" href="<?php echo $this->webroot;?>"><?php echo 'logomarca';?></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -45,7 +46,7 @@
                         </ul>
                         <ul class="nav">
                             <li id="Classifications-index">
-                                <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' inicio', array('controller' => 'classifications', 'action' => 'index'),array('escape' => false)); ?>
+                                <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' inicio', array('controller' => 'pages', 'action' => 'home'),array('escape' => false)); ?>
                             </li>
                         </ul>
                     </div>
@@ -53,7 +54,7 @@
                 </div>
             </div>
         </div>
-      <div id="off-navbar">
+      <div id="off-navbar" style="margin-top: 50px;">
         <div class="container-fluid container-config">
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
@@ -64,9 +65,9 @@
                   </ul>
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse ">
                         <li>
-                          <a href="#"><i class="icon-lock"></i> Segurança<i class="icon-chevron-down pull-right"></i></a>
+                          <a href="#"><i class="icon-user"></i> Usuários<i class="icon-chevron-down pull-right"></i></a>
                           <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse submenu">
-                              <li id="Logs-index" class="subitem"><?php echo $this->Html->link('registro de atividades', array('controller' => 'logs', 'action' => 'index')); ?></li>
+                              <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'users', 'action' => 'index')); ?></li>
                           </ul>
                         </li>                        
                     </ul>
@@ -84,15 +85,9 @@
                                       <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
                                       <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
                                       <li>
-                                          <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' Inicio',array('controller'=>'classifications','action'=>'index'),array('escape' => false));?> <span class="divider">/</span>	
+                                          <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' Inicio',array('controller'=>'pages','action'=>'home'),array('escape' => false));?> <span class="divider">/</span>	
                                       </li>
-                                      <?php if(isset($label_classification_id)):?>
-                                        <li><?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-list')) . ' Classificação',array('controller'=>'classifications','action'=>'index',$label_classification_id),array('escape' => false));?><span class="divider">/</span></li>
-                                      <?php endif;?>
-                                      <?php if(isset($label_dir_id)):?>
-                                        <li><?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-folder-open')) . ' Unidade de Arquivamento',array('controller'=>'dirs','action'=>'view',$label_dir_id),array('escape' => false));?><span class="divider">/</span></li>
-                                      <?php endif;?>
-                                      <li class="active"><?php echo $label?></li>
+                                      <li class="active"><?php if(isset($label)) echo $label;?></li>
                                   </ul>
                                 </div>
 															</div>															

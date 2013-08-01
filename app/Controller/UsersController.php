@@ -25,6 +25,8 @@ class UsersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+    if(!$id)
+      $id = $this->getUserId ();
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -93,4 +95,20 @@ class UsersController extends AppController {
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+  
+  public function login() {
+    $this->layout = 'login';
+    if ($this->request->is('post')) {
+      debug(AuthComponent::password($this->data['User']['password']));
+        if ($this->Auth->login()) {
+            $this->redirect($this->Auth->redirect());
+        } else {
+            $this->Session->setFlash(__('Your username or password was incorrect.'));
+        }
+    }
+  }
+  
+  public function logout() {
+      $this->redirect($this->Auth->logout());
+  }
 }

@@ -32,4 +32,45 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+  
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
+        )
+    );
+
+    public function beforeFilter() {
+      date_default_timezone_set('America/Sao_Paulo');
+      $this->Auth->allow('index');
+      
+      if(empty($this->beforeFilter))
+        return true;
+      $failures = false;
+      foreach ($this->beforeFilter as $func_name => $func) {
+        $call_func = true;
+        if (!empty($func['only'])) {
+          if (!in_array($this->action, $func['only']))
+            $call_func = false;
+        }
+        if (!empty($func['except'])) {
+          if (in_array($this->action, $func['except']))
+            $call_func = false;
+        }
+        if ($call_func) {
+  //                $args = (isset($func['args'])) ? implode(',',$func['args']) : null;
+          $args = (isset($func['args'])) ? $func['args'] : null;
+          if (!$this->{$func_name}($args)) {
+            $failures = true;
+            break;
+          }
+        }
+      }
+      return !$failures;
+    }
+    
+    public function getUserId() {
+      return $this->Session->read('Auth.User.id');
+    }
 }
