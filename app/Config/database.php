@@ -60,7 +60,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => '',
+		'password' => 'nonotion',
 		'database' => 'database_name',
 		'prefix' => '',
 		//'encoding' => 'utf8',
@@ -76,4 +76,24 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+  
+  public $master = array(
+      'datasource' => 'Database/Mysql',
+      'persistent' => false,
+      'host' => '192.241.225.148',
+      'login' => 'slaveuser',
+      'password' => 'n0n0ti0n',
+      'database' => 'database_name',
+      'prefix' => ''
+  );
+  
+  public $slave = array(
+      'datasource' => 'Database/Mysql',
+      'persistent' => false,
+      'host' => 'localhost',
+      'login' => 'root',
+      'password' => 'nonotion',
+      'database' => 'database_name',
+      'prefix' => ''
+  );
 }
