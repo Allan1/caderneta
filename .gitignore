@@ -1,6 +1,5 @@
 # User specific & automatically generated files #
 #################################################
-/app/Config/database.php
 /app/tmp
 /nbproject
 /lib/Cake/Console/Templates/skel/tmp/
