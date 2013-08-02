@@ -694,3 +694,209 @@ Request URL: /cakephp/webroot/favicon.ico
 Stack Trace:
 #0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2013-08-02 07:55:19 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'root\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /cakephp/users/login
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/ConnectionManager.php(107): DboSource->__construct(Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3221): ConnectionManager::getDataSource('slave')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1107): Model->setDataSource('slave')
+#4 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3243): Model->setSource('users')
+#5 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1318): Model->getDataSource()
+#6 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(199): Model->schema()
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(453): FormHelper->_introspectModel('User', 'fields')
+#8 /opt/lampp/htdocs/cakephp/app/View/Users/login.ctp(2): FormHelper->create('User', Array)
+#9 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(945): include('/opt/lampp/htdo...')
+#10 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(907): View->_evaluate('/opt/lampp/htdo...', Array)
+#11 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(471): View->_render('/opt/lampp/htdo...')
+#12 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(948): View->render(NULL, NULL)
+#13 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(194): Controller->render()
+#14 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2013-08-02 07:57:49 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'root\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /cakephp/users/login
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/ConnectionManager.php(107): DboSource->__construct(Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3221): ConnectionManager::getDataSource('slave')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1107): Model->setDataSource('slave')
+#4 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3243): Model->setSource('users')
+#5 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1318): Model->getDataSource()
+#6 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(199): Model->schema()
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(453): FormHelper->_introspectModel('User', 'fields')
+#8 /opt/lampp/htdocs/cakephp/app/View/Users/login.ctp(2): FormHelper->create('User', Array)
+#9 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(945): include('/opt/lampp/htdo...')
+#10 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(907): View->_evaluate('/opt/lampp/htdo...', Array)
+#11 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(471): View->_render('/opt/lampp/htdo...')
+#12 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(948): View->render(NULL, NULL)
+#13 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(194): Controller->render()
+#14 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2013-08-02 07:57:52 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'root\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /cakephp/users/login
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/ConnectionManager.php(107): DboSource->__construct(Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3221): ConnectionManager::getDataSource('slave')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1107): Model->setDataSource('slave')
+#4 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3243): Model->setSource('users')
+#5 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1318): Model->getDataSource()
+#6 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(199): Model->schema()
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(453): FormHelper->_introspectModel('User', 'fields')
+#8 /opt/lampp/htdocs/cakephp/app/View/Users/login.ctp(2): FormHelper->create('User', Array)
+#9 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(945): include('/opt/lampp/htdo...')
+#10 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(907): View->_evaluate('/opt/lampp/htdo...', Array)
+#11 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(471): View->_render('/opt/lampp/htdo...')
+#12 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(948): View->render(NULL, NULL)
+#13 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(194): Controller->render()
+#14 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2013-08-02 07:58:18 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'root\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /cakephp/users/login
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/ConnectionManager.php(107): DboSource->__construct(Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3221): ConnectionManager::getDataSource('slave')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1107): Model->setDataSource('slave')
+#4 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3243): Model->setSource('users')
+#5 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1318): Model->getDataSource()
+#6 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(199): Model->schema()
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(453): FormHelper->_introspectModel('User', 'fields')
+#8 /opt/lampp/htdocs/cakephp/app/View/Users/login.ctp(2): FormHelper->create('User', Array)
+#9 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(945): include('/opt/lampp/htdo...')
+#10 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(907): View->_evaluate('/opt/lampp/htdo...', Array)
+#11 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(471): View->_render('/opt/lampp/htdo...')
+#12 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(948): View->render(NULL, NULL)
+#13 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(194): Controller->render()
+#14 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2013-08-02 12:58:41 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 13:15:59 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 13:49:27 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 13:49:32 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 13:50:25 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 13:50:29 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 13:50:33 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 08:57:16 Error: Fatal Error (4): syntax error, unexpected 'User' (T_STRING) in [/opt/lampp/htdocs/cakephp/app/View/Users/index.ctp, line 30]
+2013-08-02 08:57:16 Error: [FatalErrorException] syntax error, unexpected 'User' (T_STRING)
+Request URL: /cakephp/users
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Error/ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/opt/lampp/htdo...', 30)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/opt/lampp/htdo...', 30, Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/opt/lampp/htdo...', 30, Array)
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2013-08-02 14:12:29 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-08-02 09:24:43 Error: [Exception] 
+Request URL: /cakephp/users/add
+Stack Trace:
+#0 [internal function]: UsersController->add()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2013-08-02 09:24:56 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adminasdad' for key 'username_UNIQUE'
+Request URL: /cakephp/users/add
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(460): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(426): DboSource->_execute('INSERT INTO `da...', Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(1004): DboSource->execute('INSERT INTO `da...')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1744): DboSource->create(Object(User), Array, Array)
+#4 /opt/lampp/htdocs/cakephp/app/Model/AppModel.php(73): Model->save(Array, true, Array)
+#5 /opt/lampp/htdocs/cakephp/app/Controller/UsersController.php(45): AppModel->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#9 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#10 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}

@@ -2,13 +2,12 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo $pluralVar; ?></div>
+        <div class="muted pull-left"><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="<?php echo $pluralVar; ?> form">
         <?php echo "<?php echo \$this->Form->create('{$modelClass}'); ?>\n"; ?>
           <fieldset>
-            <legend><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></legend>
         <?php
             echo "\t<?php\n";
             foreach ($fields as $field) {
@@ -27,7 +26,7 @@
         ?>
           </fieldset>
         <?php
-          echo "<?php echo \$this->Form->end(__('Submit')); ?>\n";
+          echo "<?php echo \$this->Form->end(__('Enviar')); ?>\n";
         ?>
       </div>
     </div>

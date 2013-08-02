@@ -2,11 +2,10 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo $pluralVar; ?></div>
+        <div class="muted pull-left"><?php echo "<?php echo __('{$singularHumanName}'); ?>"; ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="<?php echo $pluralVar; ?> view">
-        <h2><?php echo "<?php echo __('{$singularHumanName}'); ?>"; ?></h2>
         <table class="table table-striped">
           <?php
           foreach ($fields as $field) {

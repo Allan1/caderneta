@@ -43,7 +43,7 @@ class AppController extends Controller {
 
     public function beforeFilter() {
       date_default_timezone_set('America/Sao_Paulo');
-      $this->Auth->allow('index');
+//      $this->Auth->allow('index');
       
       if(empty($this->beforeFilter))
         return true;

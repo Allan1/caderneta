@@ -15,8 +15,8 @@ CREATE  TABLE IF NOT EXISTS `database_name`.`users` (
   `name` VARCHAR(45) NOT NULL ,
   `username` VARCHAR(45) NOT NULL ,
   `password` VARCHAR(45) NOT NULL ,
-  `created` TIMESTAMP NOT NULL ,
-  `modified` TIMESTAMP NULL ,
+  `created` DATETIME NOT NULL ,
+  `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
 ENGINE = InnoDB;

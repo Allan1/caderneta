@@ -1,11 +1,10 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left">users</div>
+        <div class="muted pull-left"><?php echo __('User'); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="users view">
-        <h2><?php echo __('User'); ?></h2>
         <table class="table table-striped">
           <tr>		<th><?php echo __('Id'); ?></th>
 		<td>

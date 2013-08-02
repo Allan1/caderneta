@@ -60,7 +60,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'nonotion',
+		'password' => '',
 		'database' => 'database_name',
 		'prefix' => '',
 		//'encoding' => 'utf8',
@@ -92,7 +92,7 @@ class DATABASE_CONFIG {
       'persistent' => false,
       'host' => 'localhost',
       'login' => 'root',
-      'password' => 'nonotion',
+      'password' => '',
       'database' => 'database_name',
       'prefix' => ''
   );

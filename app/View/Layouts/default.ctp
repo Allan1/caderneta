@@ -7,10 +7,11 @@
         <title>Template</title>
         <?php
           echo $this->Html->meta('icon');
-
           echo $this->Html->css('bootstrap.min');
+          echo $this->Html->css('styles');
           echo $this->Html->script('jquery-1.9.1.min');
           echo $this->Html->script('bootstrap.min');
+          echo $this->Html->script('scripts');
           echo $this->fetch('meta');
           echo $this->fetch('css');
           echo $this->fetch('script');
@@ -46,7 +47,7 @@
                         </ul>
                         <ul class="nav">
                             <li id="Classifications-index">
-                                <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' inicio', array('controller' => 'pages', 'action' => 'home'),array('escape' => false)); ?>
+                                <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' início', array('controller' => 'pages', 'action' => 'home'),array('escape' => false)); ?>
                             </li>
                         </ul>
                     </div>
@@ -54,7 +55,7 @@
                 </div>
             </div>
         </div>
-      <div id="off-navbar" style="margin-top: 50px;">
+      <div id="off-navbar">
         <div class="container-fluid container-config">
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
@@ -85,7 +86,7 @@
                                       <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
                                       <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
                                       <li>
-                                          <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' Inicio',array('controller'=>'pages','action'=>'home'),array('escape' => false));?> <span class="divider">/</span>	
+                                          <?php echo $this->Html->link($this->Html->tag('i','',array('class' => 'icon-home')) . ' Início',array('controller'=>'pages','action'=>'home'),array('escape' => false));?> <span class="divider">/</span>	
                                       </li>
                                       <li class="active"><?php if(isset($label)) echo $label;?></li>
                                   </ul>
@@ -105,6 +106,29 @@
                 <center>NNSolutions 2013</center>
             </footer>
         </div>
+        <script>
+        $(function() {
+            $('ul li a').next('.submenu').hide();
+            
+            $('ul li a').click(function(){
+              //$('ul li a').next('.submenu').hide();
+              $(this).next('.submenu').slideToggle();
+              $(this).parent('li').siblings().children('a').next('.submenu').hide();
+            });
+            
+            $('.master-menu').click(function(){
+              $(this).next('ul').slideToggle();
+            });
+            
+            $('#classification-master-menu').next('ul').hide();
+            
+            var link = [<?php echo '"'.$this->name.'-'.$this->action.'"';?>];
+            $('#'+link).addClass('active');
+            $('#'+link).parent('ul').show();
+          
+            
+        });
+        </script>
         <?php echo $this->Js->writeBuffer(); ?>
       </div>
     </body>
