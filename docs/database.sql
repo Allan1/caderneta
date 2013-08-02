@@ -32,6 +32,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `database_name`;
-INSERT INTO `database_name`.`users` (`id`, `name`, `username`, `password`, `created`, `modified`) VALUES (1, 'Admin', 'admin', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '1375282199', NULL);
+INSERT INTO `database_name`.`users` (`id`, `name`, `username`, `password`, `created`, `modified`) VALUES (1, 'Admin', 'admin', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '1970-01-01 00:00:00', NULL);
 
 COMMIT;
