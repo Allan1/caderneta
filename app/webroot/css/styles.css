@@ -343,3 +343,7 @@ input, select,textarea{
 .inactive{
   color: #400c0c;
 }
+.table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}

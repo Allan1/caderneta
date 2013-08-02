@@ -1,3 +1,4 @@
+<?php ?>
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">

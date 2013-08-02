@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Users Controller
  *
@@ -7,108 +9,106 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
-	}
+  /**
+   * index method
+   *
+   * @return void
+   */
+  public function index() {
+    $this->User->recursive = 0;
+    $this->set('users', $this->paginate());
+  }
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-    if(!$id)
-      $id = $this->getUserId ();
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-		$this->set('user', $this->User->find('first', $options));
-	}
+  /**
+   * view method
+   *
+   * @throws NotFoundException
+   * @param string $id
+   * @return void
+   */
+  public function view($id = null) {
+    if (!$this->User->exists($id)) {
+      throw new NotFoundException(__('Invalid user'));
+    }
+    $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+    $this->set('user', $this->User->find('first', $options));
+  }
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		}
-	}
+  /**
+   * add method
+   *
+   * @return void
+   */
+  public function add() {
+    if ($this->request->is('post')) {
+      $this->User->create();
+      if ($this->User->save($this->request->data)) {
+        $this->setFlash(__('O user foi salvo'));
+        $this->redirect(array('action' => 'index'));
+      } else {
+        $this->setFlash(__('O user não pôde ser salvo. Por favor, tente novamente.'));
+      }
+    }
+  }
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
-		}
-	}
+  /**
+   * edit method
+   *
+   * @throws NotFoundException
+   * @param string $id
+   * @return void
+   */
+  public function edit($id = null) {
+    if (!$this->User->exists($id)) {
+      throw new NotFoundException(__('Invalid user'));
+    }
+    if ($this->request->is('post') || $this->request->is('put')) {
+      if ($this->User->save($this->request->data)) {
+        $this->setFlash(__('O user foi salvo'));
+        $this->redirect(array('action' => 'index'));
+      } else {
+        $this->setFlash(__('O user não pôde ser salvo. Por favor, tente novamente.'));
+      }
+    } else {
+      $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+      $this->request->data = $this->User->find('first', $options);
+    }
+  }
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->User->id = $id;
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('User was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-  
+  /**
+   * delete method
+   *
+   * @throws NotFoundException
+   * @param string $id
+   * @return void
+   */
+  public function delete($id = null) {
+    $this->User->id = $id;
+    if (!$this->User->exists()) {
+      throw new NotFoundException(__('Invalid user'));
+    }
+    $this->request->onlyAllow('post', 'delete');
+    if ($this->User->delete()) {
+      $this->setFlash(__('User deletado'));
+      $this->redirect(array('action' => 'index'));
+    }
+    $this->setFlash(__('User não foi deletado'));
+    $this->redirect(array('action' => 'index'));
+  }
+
   public function login() {
     $this->layout = 'login';
     if ($this->request->is('post')) {
-      debug(AuthComponent::password($this->data['User']['password']));
-        if ($this->Auth->login()) {
-            $this->redirect($this->Auth->redirect());
-        } else {
-            $this->Session->setFlash(__('Your username or password was incorrect.'));
-        }
+      if ($this->Auth->login()) {
+        $this->redirect($this->Auth->redirect());
+      } else {
+        $this->setFlashFailure(__('Your username or password was incorrect.'));
+      }
     }
   }
-  
+
   public function logout() {
-      $this->redirect($this->Auth->logout());
+    $this->redirect($this->Auth->logout());
   }
+
 }
