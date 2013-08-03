@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
-        <title>Sigad Acesso</title>
+        <title>Template</title>
         <?php
         echo $this->Html->meta('favicon.ico', $this->webroot.'webroot/favicon.ico', array('type' => 'icon')); 
         echo $this->Html->css('bootstrap.min');
