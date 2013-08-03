@@ -36,20 +36,19 @@ if [ "$#" -ge 2 ]; then
   DBCFG=$2
 fi
 
-#DB_CFG=${ROOT}config/${DBCFG}.cfg
-#
-#if [ -f "$DB_CFG" ]
-#then
-#  echo ''
-#else
-#  echo "$DB_CFG nao encontrado..."
-#  exit -2
-#fi
+DB_CFG=${ROOT}config/${DBCFG}.cfg
+
+if [ -f "$DB_CFG" ]
+then
+  echo ''
+else
+  echo "$DB_CFG nao encontrado..."
+  exit -2
+fi
 
 TMP=${ROOT}.tmp
-#DB_PATH=${ROOT}app/Config/database.php
-#SQL_PATH=${ROOT}docs/cake-template.sql
-#SQL_SEED_PATH=${ROOT}docs/seeds.sql
+DB_PATH=${ROOT}app/Config/database.php
+SQL_PATH=${ROOT}docs/database.sql
 
 ROOT_CAKE_TEMPLATE=${ROOT}app/
 
@@ -98,7 +97,7 @@ dir_permission
 
 #!/bin/bash
 
-#source $DB_CFG
+source $DB_CFG
 
 if [ "$DB_RESET_PASSWD" == "true" ]; then
   php config/reset_passwd.php
@@ -110,7 +109,7 @@ replace() {
 }
 
 mysql_exec() {
-  mysql --host=$DB_HOST --user=$DB_USER --password=$DB_PASS --default-character-set=utf8 $DB_NAME < $1
+  echo "mysql --host=$DB_HOST --user=$DB_USER --password=$DB_PASS --default-character-set=utf8 $DB_NAME < $1"
 }
 
 replace_db() {
@@ -128,16 +127,13 @@ config_db() {
 
 config_sql() {
   print_task "configurando scrips sql..."
-  replace "s/nnsolution1_[0-9]/$1/g" $SQL_PATH
-  replace "s/nnsolution1_[0-9]/$1/g" $SQL_SEED_PATH
+  replace "s/database_name/$1/g" $SQL_PATH
   print_task "executando ${SQL_PATH}..."
   mysql_exec $SQL_PATH
-  print_task "executando ${SQL_SEED_PATH}..."
-  mysql_exec $SQL_SEED_PATH
 }
 
-#config_db
-#config_sql $DB_NAME
+config_db
+config_sql $DB_NAME
 
 #==============================================
 
