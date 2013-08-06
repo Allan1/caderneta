@@ -39,6 +39,10 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+      'unique' => array(
+          'rule' => 'isUnique',
+          'message' => AppModel::MSG_IS_UNIQUE
+      )
 		),
 		'password' => array(
 			'notempty' => array(

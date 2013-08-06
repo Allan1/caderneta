@@ -32,4 +32,23 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+  
+  const MSG_NOT_EMPTY = 'Campo obrigatório.';
+	const MSG_NOT_SELECTED = 'Selecione um valor para este campo.';
+	const MSG_ONLY_NUMBERS = 'Preencha este campo com números apenas.';
+	const MSG_ONLY_NUMBERS_LETTERS = 'Use apenas letras e números!';
+	const MSG_INVALID_EMAIL = 'Email inválido.';
+	const MSG_INVALID_CEP = 'CEP inválido (ex. 00000-000).';
+	const MSG_INVALID_DATE = 'Data inválida.';
+	const MSG_INVALID_STATE = 'Estado inválido. Use a sigla da UF.';
+	const MSG_INVALID_CPF = 'CPF inválido.';
+	const MSG_PASSWORD_RECHECK = 'Senha repetida não confere!';
+	const MSG_PASSWORD_LENGTH = 'A senha deve ter um mínimo de 4 caracteres!';
+	const MSG_LOGIN_NOT_UNIQUE = 'Já existe um login com esta identificação!';
+	const MSG_CPF_NOT_UNIQUE = 'Já existe um cliente com este CPF!';
+	const MSG_EMAIL_NOT_UNIQUE = 'E-mail já cadastrado!';
+	const MSG_IS_UNIQUE = 'Valor já cadastrado!';
+	const MSG_NUMBER_OUT_OF_RANGE = 'Número fora da faixa permitida!';
+	const MSG_DATA_OUT_OF_RANGE = 'Data fora da faixa permitida!';
+
 }
