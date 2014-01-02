@@ -27,6 +27,8 @@ class UsersController extends AppController {
    * @return void
    */
   public function view($id = null) {
+    if(!$id)
+      $id = $this->getUserId();
     if (!$this->User->exists($id)) {
       throw new NotFoundException(__('Invalid user'));
     }

@@ -10,6 +10,13 @@
 /dist
 /tags
 
+# CakePHP Tmp Files #
+######################
+*.log
+*app_cake_model_*
+*app_cake_core_*
+*.mwb.bak
+
 # OS generated files #
 ######################
 .DS_Store

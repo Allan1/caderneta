@@ -1150,3 +1150,73 @@ Request URL: /cakephp/cakephp/posts
 Stack Trace:
 #0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2013-08-03 19:11:48 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'root\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /cakephp/users/login
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(262): Mysql->connect()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/ConnectionManager.php(107): DboSource->__construct(Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3221): ConnectionManager::getDataSource('default')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1107): Model->setDataSource('default')
+#4 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(3243): Model->setSource('users')
+#5 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1318): Model->getDataSource()
+#6 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(199): Model->schema()
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/View/Helper/FormHelper.php(453): FormHelper->_introspectModel('User', 'fields')
+#8 /opt/lampp/htdocs/cakephp/app/View/Users/login.ctp(2): FormHelper->create('User', Array)
+#9 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(945): include('/opt/lampp/htdo...')
+#10 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(907): View->_evaluate('/opt/lampp/htdo...', Array)
+#11 /opt/lampp/htdocs/cakephp/lib/Cake/View/View.php(471): View->_render('/opt/lampp/htdo...')
+#12 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(948): View->render(NULL, NULL)
+#13 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(194): Controller->render()
+#14 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2013-08-05 01:27:27 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-01-02 20:03:45 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-01-02 17:04:00 Error: [NotFoundException] Invalid user
+Request URL: /cakephp/users/view
+Stack Trace:
+#0 [internal function]: UsersController->view()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-01-02 20:04:03 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-01-02 17:15:05 Error: [NotFoundException] Invalid user
+Request URL: /cakephp/users/view
+Stack Trace:
+#0 [internal function]: UsersController->view()
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
