@@ -44,6 +44,11 @@ class AppController extends Controller {
 
   public function beforeFilter() {
     date_default_timezone_set('America/Sao_Paulo');
+    $this->Auth->authenticate = array(
+    'Form' => array(
+        'fields' => array('username' => 'email', 'password' => 'password'),
+    ),
+);
 //      $this->Auth->allow('index');
 
     if (empty($this->beforeFilter))

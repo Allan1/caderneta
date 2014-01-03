@@ -16,7 +16,7 @@
           <tr>
             <th><?php echo $this->Paginator->sort('id'); ?></th>
             <th><?php echo $this->Paginator->sort('name','Nome'); ?></th>
-            <th><?php echo $this->Paginator->sort('username','Usuário'); ?></th>
+            <th><?php echo $this->Paginator->sort('email'); ?></th>
             <th><?php echo $this->Paginator->sort('created','Criado em'); ?></th>
             <th><?php echo $this->Paginator->sort('modified','Modificado em'); ?></th>
             <th class="actions"><?php echo __('Ações'); ?></th>
@@ -25,7 +25,7 @@
             <tr>
               <td><?php echo h($user['User']['id']); ?>&nbsp;</td>
               <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-              <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+              <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
               <td><?php echo $this->Print->datetime($user['User']['created']); ?>&nbsp;</td>
               <td><?php echo $this->Print->datetime($user['User']['modified']); ?>&nbsp;</td>
               <td class="actions">

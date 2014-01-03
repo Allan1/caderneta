@@ -31,7 +31,31 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	
+	Router::connect ('/usuarios', array('controller'=>'users','action'=>'index'));
+  Router::connect ('/usuarios/apagar/*', array('controller'=>'users','action'=>'delete'));
+  Router::connect ('/usuarios/ver/*', array('controller'=>'users','action'=>'view'));
+  Router::connect ('/usuarios/editar/*', array('controller'=>'users','action'=>'edit'));
+  Router::connect ('/usuarios/adicionar/*', array('controller'=>'users','action'=>'add'));
+  Router::connect ('/usuarios/senha/*', array('controller'=>'users','action'=>'password'));
+  Router::connect ('/usuarios/login/*', array('controller'=>'users','action'=>'login'));
+  
+  Router::connect ('/estudantes', array('controller'=>'students','action'=>'index'));
+  Router::connect ('/estudantes/apagar/*', array('controller'=>'students','action'=>'delete'));
+  Router::connect ('/estudantes/ver/*', array('controller'=>'students','action'=>'view'));
+  Router::connect ('/estudantes/editar/*', array('controller'=>'students','action'=>'edit'));
+  Router::connect ('/estudantes/adicionar/*', array('controller'=>'students','action'=>'add'));
 
+  Router::connect ('/professores', array('controller'=>'professors','action'=>'index'));
+  Router::connect ('/professores/apagar/*', array('controller'=>'professors','action'=>'delete'));
+  Router::connect ('/professores/ver/*', array('controller'=>'professors','action'=>'view'));
+  Router::connect ('/professores/editar/*', array('controller'=>'professors','action'=>'edit'));
+  Router::connect ('/professores/adicionar/*', array('controller'=>'professors','action'=>'add'));
+  
+
+	Router::connect('/:controller/ver/*',array('action'=>'view'));
+  Router::connect('/:controller/adicionar/*',array('action'=>'add'));
+  Router::connect('/:controller/editar/*',array('action'=>'edit'));
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.

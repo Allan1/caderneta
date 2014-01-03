@@ -21,9 +21,9 @@
 						</td>
 					</tr>
 					<tr>		
-						<th><?php echo __('Usuário'); ?></th>
+						<th><?php echo __('Email'); ?></th>
 						<td>
-							<?php echo h($user['User']['username']); ?>
+							<?php echo h($user['User']['email']); ?>
 							&nbsp;
 						</td>
 					</tr>

@@ -62,7 +62,7 @@ class DATABASE_CONFIG {
       'host' => 'localhost',
       'login' => 'root',
       'password' => '',
-      'database' => 'database_name',
+      'database' => 'caderneta_eletronica',
       'prefix' => '',
           //'encoding' => 'utf8',
   );

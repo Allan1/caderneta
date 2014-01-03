@@ -104,7 +104,8 @@ class UsersController extends AppController {
       if ($this->Auth->login()) {
         $this->redirect($this->Auth->redirect());
       } else {
-        $this->setFlashFailure(__('Your username or password was incorrect.'));
+        debug(AuthComponent::password($this->request->data['User']['password']));
+        $this->setFlashFailure(__('Email e/ou senha errados'));
       }
     }
   }

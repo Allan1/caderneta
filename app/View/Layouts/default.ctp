@@ -4,7 +4,7 @@
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8"></meta>
     <meta charset="UTF-8"></meta>
     <?php echo $this->Html->charset(); ?>
-    <title>Template</title>
+    <title>Caderneta Eletrônica</title>
     <?php
     echo $this->Html->meta('icon');
     echo $this->Html->css('bootstrap.min');
@@ -29,11 +29,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?php echo $this->webroot; ?>"><?php echo 'logomarca'; ?></a>
+          <a class="brand" href="<?php echo $this->webroot; ?>"><?php echo 'Caderneta Eletrônica'; ?></a>
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
               <li class="dropdown">
-                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> <?php echo($this->Session->read('Auth.User.username')); ?><i class="caret"></i></a>
+                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> <?php echo($this->Session->read('Auth.User.email')); ?><i class="caret"></i></a>
                 <ul class="dropdown-menu">
                   <li>
                     <?php echo $this->Html->link($this->Html->tag('i', '', array('class' => 'icon-edit')) . ' perfil', array('controller' => 'users', 'action' => 'view'), array('tabindex' => '-1', 'escape' => false)); ?>
@@ -98,12 +98,12 @@
             <!--Content-->
             <?php echo $this->fetch('content'); ?>
             <!--/Content-->
-            <?php //echo $this->element('sql_dump'); ?>
+            <?php echo $this->element('sql_dump'); ?>
           </div>
         </div>
         <hr>
           <footer>
-            <center>NNSolutions 2013</center>
+            <center> 2013</center>
           </footer>
       </div>
       <script>
