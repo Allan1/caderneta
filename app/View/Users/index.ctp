@@ -17,8 +17,7 @@
             <th><?php echo $this->Paginator->sort('id'); ?></th>
             <th><?php echo $this->Paginator->sort('name','Nome'); ?></th>
             <th><?php echo $this->Paginator->sort('email'); ?></th>
-            <th><?php echo $this->Paginator->sort('created','Criado em'); ?></th>
-            <th><?php echo $this->Paginator->sort('modified','Modificado em'); ?></th>
+            <th><?php echo $this->Paginator->sort('cpf'); ?></th>
             <th class="actions"><?php echo __('Ações'); ?></th>
           </tr>
           <?php foreach ($users as $user): ?>
@@ -26,8 +25,7 @@
               <td><?php echo h($user['User']['id']); ?>&nbsp;</td>
               <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
               <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-              <td><?php echo $this->Print->datetime($user['User']['created']); ?>&nbsp;</td>
-              <td><?php echo $this->Print->datetime($user['User']['modified']); ?>&nbsp;</td>
+              <td><?php echo ($user['User']['cpf']); ?>&nbsp;</td>
               <td class="actions">
                 <?php echo $this->Html->link(__('<i class="icon-eye-open"></i>'), array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-small', 'escape' => false,'title'=>'ver')); ?>
                 <?php echo $this->Html->link(__('<i class="icon-pencil icon-white"></i>'), array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-primary btn-small', 'escape' => false,'title'=>'editar')); ?>

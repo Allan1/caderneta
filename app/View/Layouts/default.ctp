@@ -66,11 +66,35 @@
             </ul>
             <ul class="nav nav-list bs-docs-sidenav nav-collapse">
               <li>
-                <a href="#"><i class="icon-user"></i> Usuários<i class="icon-chevron-down pull-right"></i></a>
+                <a href="#">Usuários<i class="icon-chevron-down pull-right"></i></a>
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
                   <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'users', 'action' => 'index')); ?></li>
                 </ul>
               </li>                        
+              <li>
+                <a href="#">Professores<i class="icon-chevron-down pull-right"></i></a>
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'professors', 'action' => 'index')); ?></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Estudantes<i class="icon-chevron-down pull-right"></i></a>
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'students', 'action' => 'index')); ?></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Disciplinas<i class="icon-chevron-down pull-right"></i></a>
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'disciplines', 'action' => 'index')); ?></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Turmas<i class="icon-chevron-down pull-right"></i></a>
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'schoolclasses', 'action' => 'index')); ?></li>
+                </ul>
+              </li>
             </ul>
           </div>
           <div class="span9" id="content">

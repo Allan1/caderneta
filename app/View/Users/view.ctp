@@ -28,19 +28,12 @@
 						</td>
 					</tr>
 					<tr>		
-						<th><?php echo __('Criado em'); ?></th>
+						<th><?php echo __('Cpf'); ?></th>
 						<td>
-							<?php echo $this->Print->datetime($user['User']['created']); ?>
+							<?php echo ($user['User']['cpf']); ?>
 							&nbsp;
 						</td>
 					</tr>
-					<tr>		
-						<th><?php echo __('Modificado em'); ?></th>
-						<td>
-							<?php echo $this->Print->datetime($user['User']['modified']); ?>
-							&nbsp;
-						</td>
-					</tr>        
 				</table>
       </div>
     </div>
