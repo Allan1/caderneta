@@ -1735,3 +1735,35 @@ Stack Trace:
 #11 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(ProfessorsController), Object(CakeRequest), Object(CakeResponse))
 #12 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #13 {main}
+2014-01-07 20:37:32 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /cakephp/webroot/favicon.ico
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-01-07 17:46:40 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'cpf_UNIQUE'
+Request URL: /cakephp/usuarios/adicionar
+Stack Trace:
+#0 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(460): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(426): DboSource->_execute('INSERT INTO `ca...', Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Datasource/DboSource.php(1004): DboSource->execute('INSERT INTO `ca...')
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Model/Model.php(1744): DboSource->create(Object(User), Array, Array)
+#4 /opt/lampp/htdocs/cakephp/app/Controller/UsersController.php(47): Model->save(Array)
+#5 [internal function]: UsersController->add()
+#6 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#8 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-01-07 17:47:21 Error: [NotFoundException] professor inválido(a).
+Request URL: /cakephp/professores/apagar/0
+Stack Trace:
+#0 [internal function]: ProfessorsController->delete('0')
+#1 /opt/lampp/htdocs/cakephp/lib/Cake/Controller/Controller.php(486): ReflectionMethod->invokeArgs(Object(ProfessorsController), Array)
+#2 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#3 /opt/lampp/htdocs/cakephp/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(ProfessorsController), Object(CakeRequest), Object(CakeResponse))
+#4 /opt/lampp/htdocs/cakephp/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
