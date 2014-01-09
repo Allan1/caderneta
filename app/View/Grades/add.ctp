@@ -8,10 +8,10 @@
         <?php echo $this->Form->create('Grade'); ?>
           <fieldset>
         	<?php
-		echo $this->Form->input('value',array('label'=>'Valor'));
-		echo $this->Form->input('evaluation_id',array('label'=>'Avaliação'));
-		echo $this->Form->input('schoolclasses_student_id',array('label'=>'Estudante - Turma'));
-	?>
+        		echo $this->Form->input('value',array('label'=>'Valor'));
+        		echo $this->Form->input('evaluation_id',array('label'=>'Avaliação','options'=>$evaluations));
+        		echo $this->Form->input('schoolclasses_student_id',array('label'=>'Estudante - Turma'));
+        	?>
           </fieldset>
         <?php echo $this->Form->end(__('Enviar')); ?>
       </div>

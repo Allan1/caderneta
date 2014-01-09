@@ -57,14 +57,21 @@ class GradesController extends AppController {
 				$this->setFlash(__('O(A) nota não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
-		$evaluations = $this->Grade->Evaluation->find('list');
+		$evaluationsAll = $this->Grade->Evaluation->find('all');
+		$evaluations = array();
+
 		if ($schoolclasses_student_id) {
 			$schoolclasses_student = $this->Grade->SchoolclassesStudent->read(null,$schoolclasses_student_id);
 			$schoolclassesStudents = array($schoolclasses_student_id=>$schoolclasses_student['SchoolclassesStudent']['student_enrolment']);
-			$evaluations = $this->Grade->Evaluation->find('list',array('conditions'=>array('Evaluation.schoolclasse_id'=>$schoolclasses_student['SchoolclassesStudent']['schoolclasse_id'])));
+			$evaluationsAll = $this->Grade->Evaluation->find('all',array('conditions'=>array('Evaluation.schoolclasse_id'=>$schoolclasses_student['SchoolclassesStudent']['schoolclasse_id'])));
 		}
 		else
 			$schoolclassesStudents = $this->Grade->SchoolclassesStudent->find('list');
+
+		foreach ($evaluationsAll as $key => $value) {
+			$evaluations[$value['Evaluation']['id']] = $value['Evaluation']['number'].'-'.$value['Evaluationtype']['name'];
+		}
+		
 		$this->set(compact('evaluations', 'schoolclassesStudents'));
 	}
 

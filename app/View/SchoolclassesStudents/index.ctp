@@ -1,7 +1,12 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Schoolclasses Estudantes'); ?></div>
+      <?php 
+        $turma = '';
+        if(isset($schoolclass)) 
+          $turma = $schoolclass['Schoolclasse']['semester'].' '.$schoolclass['Schoolclasse']['discipline_code'].' '.$schoolclass['Schoolclasse']['code'];
+      ?>
+        <div class="muted pull-left"><?php echo __('Estudantes da Turma '.$turma); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="schoolclassesStudents index">
@@ -13,17 +18,17 @@
         </div>
         <table class="table table-striped ">
           <tr>
-                      <th><?php echo $this->Paginator->sort('id'); ?></th>
-                      <th><?php echo $this->Paginator->sort('schoolclasse_id'); ?></th>
-                      <th><?php echo $this->Paginator->sort('student_enrolment'); ?></th>
-                      <th><?php echo $this->Paginator->sort('attendance'); ?></th>
-                      <th class="actions"><?php echo __('Ações'); ?></th>
+            <th><?php echo $this->Paginator->sort('id'); ?></th>
+            <th><?php echo $this->Paginator->sort('schoolclasse_id','Turma'); ?></th>
+            <th><?php echo $this->Paginator->sort('student_enrolment','Matrícula'); ?></th>
+            <th><?php echo $this->Paginator->sort('attendance','Presenças'); ?></th>
+            <th class="actions"><?php echo __('Ações'); ?></th>
           </tr>
           <?php foreach ($schoolclassesStudents as $schoolclassesStudent): ?>
 	<tr>
 		<td><?php echo h($schoolclassesStudent['SchoolclassesStudent']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($schoolclassesStudent['Schoolclasse']['id'], array('controller' => 'schoolclasses', 'action' => 'view', $schoolclassesStudent['Schoolclasse']['id'])); ?>
+			<?php echo $this->Html->link($schoolclassesStudent['Schoolclasse']['semester'].' '.$schoolclassesStudent['Schoolclasse']['discipline_code'].' '.$schoolclassesStudent['Schoolclasse']['code'], array('controller' => 'schoolclasses', 'action' => 'view', $schoolclassesStudent['Schoolclasse']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($schoolclassesStudent['Student']['enrolment'], array('controller' => 'students', 'action' => 'view', $schoolclassesStudent['Student']['enrolment'])); ?>

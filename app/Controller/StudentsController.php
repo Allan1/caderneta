@@ -19,6 +19,7 @@ class StudentsController extends AppController {
 	public function index() {
 		$this->Student->recursive = 0;
 		$this->set('students', $this->paginate());
+		$this->Student->bestStudents();
 	}
 
 /**

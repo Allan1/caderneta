@@ -48,19 +48,9 @@
 								</tr>
 							<?php endforeach;?>
 						</table>
-						<p>Estudantes:</p>
-						<table class="table table-striped">
-							<tr>
-								<th>Matrícula</th>
-								<th>Nome</th>
-							</tr>
-							<?php foreach($schoolclass['Student'] as $value):?>
-								<tr>
-									<td><?php echo $this->Html->link($value['enrolment'],array('controller'=>'students','action'=>'view',$value['enrolment']))?></td>
-									<td><?php echo($value['User']['name'])?></td>
-								</tr>
-							<?php endforeach;?>
-						</table>
+
+						<?php echo $this->Html->link('Estudantes',array('controller'=>'schoolclasses_students','action'=>'index',$schoolclass['Schoolclass']['id']),array('class'=>'btn'));?>
+						
       </div>
     </div>
   </div>

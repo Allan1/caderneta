@@ -137,7 +137,7 @@ class Schoolclass extends AppModel {
 					array(
 						'table'=>'professors',
 						'alias'=>'Professor',
-						'condition'=>'Professor.siape = Schoolclass.professor_siape'
+						'conditions'=>'Professor.siape = Schoolclass.professor_siape'
 					)
 				)
 			)) ||
@@ -147,7 +147,7 @@ class Schoolclass extends AppModel {
 					array(
 						'table'=>'students',
 						'alias'=>'Student',
-						'condition'=>'Student.enrolment = Schoolclass.student_enrolment'
+						'conditions'=>'Student.enrolment = Schoolclass.student_enrolment'
 					)
 				)
 			))

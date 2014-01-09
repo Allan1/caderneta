@@ -8,12 +8,12 @@
         <?php echo $this->Form->create('Evaluation'); ?>
           <fieldset>
         	<?php
-		echo $this->Form->input('number',array('label'=>'Número'));
-		echo $this->Form->input('date',array('type'=>'text','class'=>'datepicker','label'=>'Data'));
-		echo $this->Form->input('weight',array('label'=>'Peso'));
-		echo $this->Form->input('schoolclasse_id',array('label'=>'Turma'));
-		echo $this->Form->input('evaluationtype_id',array('label'=>'Tipo'));
-	?>
+        		echo $this->Form->input('number',array('label'=>'Número'));
+        		echo $this->Form->input('date',array('label'=>'Data'));
+        		echo $this->Form->input('weight',array('label'=>'Peso'));
+        		echo $this->Form->input('schoolclasse_id',array('label'=>'Turma'));
+        		echo $this->Form->input('evaluationtype_id',array('label'=>'Tipo'));
+        	?>
           </fieldset>
         <?php echo $this->Form->end(__('Enviar')); ?>
       </div>

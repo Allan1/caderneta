@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Disciplines'); ?></div>
+        <div class="muted pull-left"><?php echo __('Disciplinas'); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="disciplines index">
@@ -13,10 +13,10 @@
         </div>
         <table class="table table-striped ">
           <tr>
-                      <th><?php echo $this->Paginator->sort('code'); ?></th>
-                      <th><?php echo $this->Paginator->sort('name'); ?></th>
-                      <th><?php echo $this->Paginator->sort('course_load'); ?></th>
-                      <th><?php echo $this->Paginator->sort('minimal_attendance'); ?></th>
+                      <th><?php echo $this->Paginator->sort('code','Código'); ?></th>
+                      <th><?php echo $this->Paginator->sort('name','Nome'); ?></th>
+                      <th><?php echo $this->Paginator->sort('course_load','Carga horária'); ?></th>
+                      <th><?php echo $this->Paginator->sort('minimal_attendance','Frequência minima'); ?></th>
                       <th class="actions"><?php echo __('Ações'); ?></th>
           </tr>
           <?php foreach ($disciplines as $discipline): ?>

@@ -8,6 +8,7 @@
     <?php
     echo $this->Html->meta('icon');
     echo $this->Html->css('bootstrap.min');
+    echo $this->Html->css('jquery-ui');
     echo $this->Html->css('datepicker');
     echo $this->Html->css('styles');
     echo $this->Html->script('jquery-1.9.1.min');
@@ -149,6 +150,18 @@
       </div>
       <script>
         $(function() {
+          $( ".datepicker" ).datepicker({
+            dateFormat: "dd/mm/yy",
+            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+            dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+            prevText: 'Anterior', 
+            nextText: 'Próximo',
+          }); 
+        });
+        $(function() {
           $('ul li a').next('.submenu').hide();
 
           $('ul li a').click(function() {
@@ -159,17 +172,6 @@
           var link = [<?php echo '"' . $this->name . '-' . $this->action . '"'; ?>];
           $('#' + link).addClass('active');
           $('#' + link).parent('ul').show();
-
-          $('.datepicker').datepicker({
-            dateFormat: 'dd/mm/yy',
-            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-            dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-            prevText: 'Anterior', 
-            nextText: 'Próximo',
-          });
         });
       </script>
       <?php echo $this->Js->writeBuffer(); ?>

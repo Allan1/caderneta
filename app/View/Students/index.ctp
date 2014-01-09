@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Students'); ?></div>
+        <div class="muted pull-left"><?php echo __('Estudantes'); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="students index">
@@ -13,8 +13,8 @@
         </div>
         <table class="table table-striped ">
           <tr>
-                      <th><?php echo $this->Paginator->sort('enrolment'); ?></th>
-                      <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+                      <th><?php echo $this->Paginator->sort('enrolment','Matrícula'); ?></th>
+                      <th><?php echo $this->Paginator->sort('user_id','Usuário'); ?></th>
                       <th class="actions"><?php echo __('Ações'); ?></th>
           </tr>
           <?php foreach ($students as $student): ?>

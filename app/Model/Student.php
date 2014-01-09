@@ -83,4 +83,22 @@ class Student extends AppModel {
 		)
 	);
 
+	public function bestStudents()	{
+		$result = $this->find('all',array(
+			'joins'=>array(
+				array(
+					'table'=>'schoolclasses_students',
+					'alias'=>'SchoolclassesStudent',
+					'conditions'=>'SchoolclassesStudent.student_enrolment = Student.enrolment'
+				),
+				array(
+					'table'=>'grades',
+					'alias'=>'Grade',
+					'conditions'=>'SchoolclassesStudent.id = Grade.schoolclasses_student_id'
+				),
+			)
+		));
+		debug($result);
+	}
+
 }

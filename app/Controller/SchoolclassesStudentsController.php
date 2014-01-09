@@ -13,10 +13,13 @@ class SchoolclassesStudentsController extends AppController {
  * @return void
  */
 	public function index($schoolclasse_id = null) {
-		$this->SchoolclassesStudent->recursive = 0;
+		$this->SchoolclassesStudent->recursive = 1;
 		if($schoolclasse_id){
 			$this->paginate = array('conditions'=>array('SchoolclassesStudent.schoolclasse_id'=>$schoolclasse_id));
+			$schoolclass = $this->SchoolclassesStudent->Schoolclasse->read(null,$schoolclasse_id);
+			$this->set(compact('schoolclass'));
 		}
+		
 		$this->set('schoolclassesStudents', $this->paginate());
 	}
 

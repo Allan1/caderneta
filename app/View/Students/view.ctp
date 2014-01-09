@@ -34,7 +34,7 @@
 									<td><?php echo $value['semester'];?></td>
 									<td><?php echo $value['discipline_code'];?></td>
 									<td><?php echo $value['code'];?></td>
-									<td><?php echo $this->Html->link('Ver',array('controller'=>'professors_schoolclasses','action'=>'view',$value['id']),array('class'=>'btn'));?></td>
+									<td><?php echo $this->Html->link('Ver',array('controller'=>'schoolclasses_students','action'=>'view',$value['id']),array('class'=>'btn'));?></td>
 								</tr>
 							<?php endforeach;?>
 						</table>
