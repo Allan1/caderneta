@@ -1,16 +1,16 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Editar Plano de Ensino'); ?></div>
+        <div class="muted pull-left"><?php echo __('Editar Professors Schoolclass'); ?></div>
     </div>
     <div class="block-content collapse in">
-      <div class="educationplans form">
-        <?php echo $this->Form->create('Educationplan'); ?>
+      <div class="professorsSchoolclasses form">
+        <?php echo $this->Form->create('ProfessorsSchoolclass'); ?>
           <fieldset>
         	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('content');
-		echo $this->Form->input('disciplines_code');
+		echo $this->Form->input('professor_siape',array('options'=>$professors));
+		echo $this->Form->input('schoolclasse_id');
 	?>
           </fieldset>
         <?php echo $this->Form->end(__('Enviar')); ?>

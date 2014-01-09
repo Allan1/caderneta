@@ -14,8 +14,8 @@ CREATE  TABLE IF NOT EXISTS `caderneta_eletronica`.`users` (
   `name` VARCHAR(100) NOT NULL ,
   `email` VARCHAR(45) NOT NULL ,
   `password` VARCHAR(255) NOT NULL ,
-  `cpf` INT NOT NULL ,
-  `admin` TINYINT(1) NOT NULL ,
+  `cpf` VARCHAR(11) NOT NULL ,
+  `admin` TINYINT(1) NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
@@ -58,7 +58,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `caderneta_eletronica`.`educationplans` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `content` VARCHAR(45) NOT NULL ,
+  `objetives` TEXT NOT NULL ,
   `disciplines_code` VARCHAR(10) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_educationplans_disciplines1` (`disciplines_code` ASC) ,
@@ -93,7 +93,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `caderneta_eletronica`.`schoolclasses` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `code` INT NOT NULL ,
+  `code` VARCHAR(10) NOT NULL ,
   `semester` VARCHAR(5) NOT NULL ,
   `discipline_code` VARCHAR(10) NOT NULL ,
   PRIMARY KEY (`id`) ,
@@ -114,7 +114,7 @@ CREATE  TABLE IF NOT EXISTS `caderneta_eletronica`.`schoolclasses_students` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `schoolclasse_id` INT NOT NULL ,
   `student_enrolment` INT NOT NULL ,
-  `attendance` INT NOT NULL ,
+  `attendance` INT NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_classes_has_students_students1` (`student_enrolment` ASC) ,
   INDEX `fk_classes_has_students_classes1` (`schoolclasse_id` ASC) ,
@@ -229,6 +229,52 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `caderneta_eletronica`;
-INSERT INTO `caderneta_eletronica`.`users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES (1, 'Allan', 'allanoliveira.main@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', 0, 0);
+INSERT INTO `caderneta_eletronica`.`users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES (1, 'Allan', 'allanoliveira.main@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '1', 0);
+INSERT INTO `caderneta_eletronica`.`users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES (2, 'Elvis', 'elvis@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '2', 0);
+INSERT INTO `caderneta_eletronica`.`users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES (3, 'Fernando', 'nando@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '3', 0);
+INSERT INTO `caderneta_eletronica`.`users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES (4, 'Admin', 'admin@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '4', 1);
+INSERT INTO `caderneta_eletronica`.`users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES (5, 'Vaninha', 'vaninha@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '5', 0);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `caderneta_eletronica`.`professors`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `caderneta_eletronica`;
+INSERT INTO `caderneta_eletronica`.`professors` (`siape`, `user_id`) VALUES (1, 5);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `caderneta_eletronica`.`disciplines`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `caderneta_eletronica`;
+INSERT INTO `caderneta_eletronica`.`disciplines` (`code`, `name`, `course_load`, `minimal_attendance`) VALUES ('MATA60', 'Banco de Dados', 68, 20);
+INSERT INTO `caderneta_eletronica`.`disciplines` (`code`, `name`, `course_load`, `minimal_attendance`) VALUES ('MATA63', 'Engenharia de Software 2', 68, 20);
+INSERT INTO `caderneta_eletronica`.`disciplines` (`code`, `name`, `course_load`, `minimal_attendance`) VALUES ('MATA40', 'Estrutura de Dados', 68, 20);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `caderneta_eletronica`.`students`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `caderneta_eletronica`;
+INSERT INTO `caderneta_eletronica`.`students` (`enrolment`, `user_id`) VALUES (211100666, 1);
+INSERT INTO `caderneta_eletronica`.`students` (`enrolment`, `user_id`) VALUES (200000000, 2);
+INSERT INTO `caderneta_eletronica`.`students` (`enrolment`, `user_id`) VALUES (200000001, 3);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `caderneta_eletronica`.`schoolclasses`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `caderneta_eletronica`;
+INSERT INTO `caderneta_eletronica`.`schoolclasses` (`id`, `code`, `semester`, `discipline_code`) VALUES (1, '1', '20132', 'MATA60');
+INSERT INTO `caderneta_eletronica`.`schoolclasses` (`id`, `code`, `semester`, `discipline_code`) VALUES (2, '1', '20132', 'MATA63');
+INSERT INTO `caderneta_eletronica`.`schoolclasses` (`id`, `code`, `semester`, `discipline_code`) VALUES (3, '1', '20132', 'MATA40');
 
 COMMIT;

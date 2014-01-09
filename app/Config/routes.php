@@ -26,7 +26,7 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'users', 'action' => 'view'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
@@ -52,6 +52,48 @@
   Router::connect ('/professores/editar/*', array('controller'=>'professors','action'=>'edit'));
   Router::connect ('/professores/adicionar/*', array('controller'=>'professors','action'=>'add'));
   
+  Router::connect ('/avaliacoes', array('controller'=>'evaluations','action'=>'index'));
+  Router::connect ('/avaliacoes/apagar/*', array('controller'=>'evaluations','action'=>'delete'));
+  Router::connect ('/avaliacoes/ver/*', array('controller'=>'evaluations','action'=>'view'));
+  Router::connect ('/avaliacoes/editar/*', array('controller'=>'evaluations','action'=>'edit'));
+  Router::connect ('/avaliacoes/adicionar/*', array('controller'=>'evaluations','action'=>'add'));
+
+  Router::connect ('/tidoDeAvaliacoes', array('controller'=>'evaluationtypes','action'=>'index'));
+  Router::connect ('/tidoDeAvaliacoes/apagar/*', array('controller'=>'evaluationtypes','action'=>'delete'));
+  Router::connect ('/tidoDeAvaliacoes/ver/*', array('controller'=>'evaluationtypes','action'=>'view'));
+  Router::connect ('/tidoDeAvaliacoes/editar/*', array('controller'=>'evaluationtypes','action'=>'edit'));
+  Router::connect ('/tidoDeAvaliacoes/adicionar/*', array('controller'=>'evaluationtypes','action'=>'add'));
+    
+  Router::connect ('/notas', array('controller'=>'grades','action'=>'index'));
+  Router::connect ('/notas/apagar/*', array('controller'=>'grades','action'=>'delete'));
+  Router::connect ('/notas/ver/*', array('controller'=>'grades','action'=>'view'));
+  Router::connect ('/notas/editar/*', array('controller'=>'grades','action'=>'edit'));
+  Router::connect ('/notas/adicionar/*', array('controller'=>'grades','action'=>'add'));
+  
+  Router::connect ('/ministra', array('controller'=>'professors_schoolclasses','action'=>'index'));
+  Router::connect ('/ministra/apagar/*', array('controller'=>'professors_schoolclasses','action'=>'delete'));
+  Router::connect ('/ministra/ver/*', array('controller'=>'professors_schoolclasses','action'=>'view'));
+  Router::connect ('/ministra/editar/*', array('controller'=>'professors_schoolclasses','action'=>'edit'));
+  Router::connect ('/ministra/adicionar/*', array('controller'=>'professors_schoolclasses','action'=>'add'));
+
+  Router::connect ('/cursa', array('controller'=>'schoolclasses_students','action'=>'index'));
+  Router::connect ('/cursa/apagar/*', array('controller'=>'schoolclasses_students','action'=>'delete'));
+  Router::connect ('/cursa/ver/*', array('controller'=>'schoolclasses_students','action'=>'view'));
+  Router::connect ('/cursa/editar/*', array('controller'=>'schoolclasses_students','action'=>'edit'));
+  Router::connect ('/cursa/adicionar/*', array('controller'=>'schoolclasses_students','action'=>'add'));
+
+  Router::connect ('/disciplinas', array('controller'=>'disciplines','action'=>'index'));
+  Router::connect ('/disciplinas/apagar/*', array('controller'=>'disciplines','action'=>'delete'));
+  Router::connect ('/disciplinas/ver/*', array('controller'=>'disciplines','action'=>'view'));
+  Router::connect ('/disciplinas/editar/*', array('controller'=>'disciplines','action'=>'edit'));
+  Router::connect ('/disciplinas/adicionar/*', array('controller'=>'disciplines','action'=>'add'));
+
+  Router::connect ('/turmas', array('controller'=>'schoolclasses','action'=>'index'));
+  Router::connect ('/turmas/apagar/*', array('controller'=>'schoolclasses','action'=>'delete'));
+  Router::connect ('/turmas/ver/*', array('controller'=>'schoolclasses','action'=>'view'));
+  Router::connect ('/turmas/editar/*', array('controller'=>'schoolclasses','action'=>'edit'));
+  Router::connect ('/turmas/adicionar/*', array('controller'=>'schoolclasses','action'=>'add'));
+      
 
 	Router::connect('/:controller/ver/*',array('action'=>'view'));
   Router::connect('/:controller/adicionar/*',array('action'=>'add'));

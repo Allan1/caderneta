@@ -8,7 +8,7 @@
         <div class="btn-group">
           <button data-toggle="dropdown" class="btn dropdown-toggle">Opções <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li><?php echo $this->Html->link('adicionar',array('action'=>'add'));?></li>
+            <li><?php echo $this->Html->link('adicionar',array('action'=>'add',$schoolclasses_student_id));?></li>
           </ul>
         </div>
         <table class="table table-striped ">

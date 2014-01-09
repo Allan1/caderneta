@@ -8,9 +8,12 @@
     <?php
     echo $this->Html->meta('icon');
     echo $this->Html->css('bootstrap.min');
+    echo $this->Html->css('datepicker');
     echo $this->Html->css('styles');
     echo $this->Html->script('jquery-1.9.1.min');
     echo $this->Html->script('bootstrap.min');
+    echo $this->Html->script('jquery-ui');
+    echo $this->Html->script('datepicker');
     echo $this->Html->script('scripts');
     echo $this->fetch('meta');
     echo $this->fetch('css');
@@ -65,34 +68,48 @@
               </li>
             </ul>
             <ul class="nav nav-list bs-docs-sidenav nav-collapse">
-              <li>
-                <a href="#">Usuários<i class="icon-chevron-down pull-right"></i></a>
-                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'users', 'action' => 'index')); ?></li>
-                </ul>
-              </li>                        
+              <?php if($this->Session->read('Auth.User.admin')):?>
+                <li>
+                  <a href="#">Usuários<i class="icon-chevron-down pull-right"></i></a>
+                  <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                    <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'users', 'action' => 'index')); ?></li>
+                  </ul>
+                </li>                        
+              <?php endif;?>
               <li>
                 <a href="#">Professores<i class="icon-chevron-down pull-right"></i></a>
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'professors', 'action' => 'index')); ?></li>
+                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'professors', 'action' => 'index')); ?></li>
                 </ul>
               </li>
               <li>
                 <a href="#">Estudantes<i class="icon-chevron-down pull-right"></i></a>
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'students', 'action' => 'index')); ?></li>
+                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'students', 'action' => 'index')); ?></li>
                 </ul>
               </li>
               <li>
                 <a href="#">Disciplinas<i class="icon-chevron-down pull-right"></i></a>
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'disciplines', 'action' => 'index')); ?></li>
+                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'disciplines', 'action' => 'index')); ?></li>
                 </ul>
               </li>
               <li>
                 <a href="#">Turmas<i class="icon-chevron-down pull-right"></i></a>
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li id="Logs-index" class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'schoolclasses', 'action' => 'index')); ?></li>
+                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'schoolclasses', 'action' => 'index')); ?></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Avaliações<i class="icon-chevron-down pull-right"></i></a>
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'evaluations', 'action' => 'index')); ?></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Tipos de Avaliações<i class="icon-chevron-down pull-right"></i></a>
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'evaluationtypes', 'action' => 'index')); ?></li>
                 </ul>
               </li>
             </ul>
@@ -143,6 +160,16 @@
           $('#' + link).addClass('active');
           $('#' + link).parent('ul').show();
 
+          $('.datepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+            dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+            prevText: 'Anterior', 
+            nextText: 'Próximo',
+          });
         });
       </script>
       <?php echo $this->Js->writeBuffer(); ?>

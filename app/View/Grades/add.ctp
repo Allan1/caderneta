@@ -1,16 +1,16 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Add Grade'); ?></div>
+        <div class="muted pull-left"><?php echo __('Adicionar Nota'); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="grades form">
         <?php echo $this->Form->create('Grade'); ?>
           <fieldset>
         	<?php
-		echo $this->Form->input('value');
-		echo $this->Form->input('evaluation_id');
-		echo $this->Form->input('schoolclasses_student_id');
+		echo $this->Form->input('value',array('label'=>'Valor'));
+		echo $this->Form->input('evaluation_id',array('label'=>'Avaliação'));
+		echo $this->Form->input('schoolclasses_student_id',array('label'=>'Estudante - Turma'));
 	?>
           </fieldset>
         <?php echo $this->Form->end(__('Enviar')); ?>

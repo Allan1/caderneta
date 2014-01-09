@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Professor $Professor
  */
 class ProfessorsController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *

@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Add Professor'); ?></div>
+        <div class="muted pull-left"><?php echo __('Adicionar Professor'); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="professors form">

@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="block">
     <div class="navbar navbar-inner block-header">
-        <div class="muted pull-left"><?php echo __('Evaluationtypes'); ?></div>
+        <div class="muted pull-left"><?php echo __('Tipos de Avaliação'); ?></div>
     </div>
     <div class="block-content collapse in">
       <div class="evaluationtypes index">

@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Educationplan $Educationplan
  */
 class EducationplansController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *
@@ -42,10 +46,10 @@ class EducationplansController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Educationplan->create();
 			if ($this->Educationplan->save($this->request->data)) {
-				$this->setFlash(__('O(A) educationplan foi salvo'));
+				$this->setFlash(__('O(A) plano de ensino foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) educationplan não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) plano de ensino não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
 		$disciplines = $this->Educationplan->Discipline->find('list');
@@ -66,10 +70,10 @@ class EducationplansController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Educationplan->save($this->request->data)) {
-				$this->setFlash(__('O(A) educationplan foi salvo'));
+				$this->setFlash(__('O(A) plano de ensino foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) educationplan não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) plano de ensino não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Educationplan.' . $this->Educationplan->primaryKey => $id));

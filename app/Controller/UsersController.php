@@ -8,7 +8,11 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
-
+  var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','login','logout','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
   /**
    * index method
    *
@@ -27,10 +31,10 @@ class UsersController extends AppController {
    * @return void
    */
   public function view($id = null) {
-    if(!$id)
+    //if(!$id)
       $id = $this->getUserId();
     if (!$this->User->exists($id)) {
-      throw new NotFoundException(__('Invalid user'));
+      throw new NotFoundException(__('Invalid usuário'));
     }
     $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
     $this->set('user', $this->User->find('first', $options));
@@ -45,10 +49,10 @@ class UsersController extends AppController {
     if ($this->request->is('post')) {
       $this->User->create();
       if ($this->User->save($this->request->data)) {
-        $this->setFlash(__('O user foi salvo'));
+        $this->setFlash(__('O usuário foi salvo'));
         $this->redirect(array('action' => 'index'));
       } else {
-        $this->setFlash(__('O user não pôde ser salvo. Por favor, tente novamente.'));
+        $this->setFlash(__('O usuário não pôde ser salvo. Por favor, tente novamente.'));
       }
     }
   }
@@ -62,14 +66,14 @@ class UsersController extends AppController {
    */
   public function edit($id = null) {
     if (!$this->User->exists($id)) {
-      throw new NotFoundException(__('Invalid user'));
+      throw new NotFoundException(__('Invalid usuário'));
     }
     if ($this->request->is('post') || $this->request->is('put')) {
       if ($this->User->save($this->request->data)) {
-        $this->setFlash(__('O user foi salvo'));
+        $this->setFlash(__('O usuário foi salvo'));
         $this->redirect(array('action' => 'index'));
       } else {
-        $this->setFlash(__('O user não pôde ser salvo. Por favor, tente novamente.'));
+        $this->setFlash(__('O usuário não pôde ser salvo. Por favor, tente novamente.'));
       }
     } else {
       $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
@@ -87,7 +91,7 @@ class UsersController extends AppController {
   public function delete($id = null) {
     $this->User->id = $id;
     if (!$this->User->exists()) {
-      throw new NotFoundException(__('Invalid user'));
+      throw new NotFoundException(__('Invalid usuário'));
     }
     $this->request->onlyAllow('post', 'delete');
     if ($this->User->delete()) {

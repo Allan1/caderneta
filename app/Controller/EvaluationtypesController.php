@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Evaluationtype $Evaluationtype
  */
 class EvaluationtypesController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *
@@ -42,10 +46,10 @@ class EvaluationtypesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Evaluationtype->create();
 			if ($this->Evaluationtype->save($this->request->data)) {
-				$this->setFlash(__('O(A) evaluationtype foi salvo'));
+				$this->setFlash(__('O(A) tipo de avaliação foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) evaluationtype não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) tipo de avaliação não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
 	}
@@ -64,10 +68,10 @@ class EvaluationtypesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Evaluationtype->save($this->request->data)) {
-				$this->setFlash(__('O(A) evaluationtype foi salvo'));
+				$this->setFlash(__('O(A) tipo de avaliação foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) evaluationtype não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) tipo de avaliação não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Evaluationtype.' . $this->Evaluationtype->primaryKey => $id));

@@ -97,7 +97,7 @@ class Schoolclass extends AppModel {
 			'className' => 'Professor',
 			'joinTable' => 'professors_schoolclasses',
 			'foreignKey' => 'schoolclasse_id',
-			'associationForeignKey' => 'professor_id',
+			'associationForeignKey' => 'professor_siape',
 			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',
@@ -124,5 +124,36 @@ class Schoolclass extends AppModel {
 			'insertQuery' => ''
 		)
 	);
+
+	public function belongsToSchoolclass($user_id,$id = null){
+		if ($id) {
+			$this->id = $id;
+		}
+
+		if( 
+			$this->find('first',array(
+				'conditions'=>array('Professor.user_id'=>$user_id),
+				'joins'=>array(
+					array(
+						'table'=>'professors',
+						'alias'=>'Professor',
+						'condition'=>'Professor.siape = Schoolclass.professor_siape'
+					)
+				)
+			)) ||
+			$this->find('first',array(
+				'conditions'=>array('Student.user_id'=>$user_id),
+				'joins'=>array(
+					array(
+						'table'=>'students',
+						'alias'=>'Student',
+						'condition'=>'Student.enrolment = Schoolclass.student_enrolment'
+					)
+				)
+			))
+		)
+			return true;
+		return false;
+	}
 
 }

@@ -60,4 +60,20 @@ class User extends AppModel {
       $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
       return true;
   }
+
+  public function isProfessor($id = null) {
+  	if ($id) {
+  		$this->id = $id;
+  	}
+
+  	return $this->Professor->find('first',array('conditions'=>array('Professor.user_id'=>$this->id)));
+  }
+
+  public function isStudent($id = null) {
+  	if ($id) {
+  		$this->id = $id;
+  	}
+
+  	return $this->Student->find('first',array('conditions'=>array('Student.user_id'=>$this->id)));
+  }
 }

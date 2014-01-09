@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Discipline $Discipline
  */
 class DisciplinesController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *
@@ -42,10 +46,10 @@ class DisciplinesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Discipline->create();
 			if ($this->Discipline->save($this->request->data)) {
-				$this->setFlash(__('O(A) discipline foi salvo'));
+				$this->setFlash(__('O(A) disciplina foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) discipline não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) disciplina não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
 	}
@@ -64,10 +68,10 @@ class DisciplinesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Discipline->save($this->request->data)) {
-				$this->setFlash(__('O(A) discipline foi salvo'));
+				$this->setFlash(__('O(A) disciplina foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) discipline não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) disciplina não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Discipline.' . $this->Discipline->primaryKey => $id));

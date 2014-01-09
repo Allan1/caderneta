@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Schoolclass $Schoolclass
  */
 class SchoolclassesController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *
@@ -26,6 +30,7 @@ class SchoolclassesController extends AppController {
  */
 	public function view($id = null) {
     $this->Schoolclass->id = $id;
+    $this->Schoolclass->recursive = 2;
 		if (!$this->Schoolclass->exists()) {
 			throw new NotFoundException(__('schoolclass inválido(a).'));
 		}
@@ -42,15 +47,28 @@ class SchoolclassesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Schoolclass->create();
 			if ($this->Schoolclass->save($this->request->data)) {
-				$this->setFlash(__('O(A) schoolclass foi salvo'));
+				$this->setFlash(__('O(A) turma foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) schoolclass não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) turma não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
 		$disciplines = $this->Schoolclass->Discipline->find('list');
-		$professors = $this->Schoolclass->Professor->find('list');
-		$students = $this->Schoolclass->Student->find('list');
+		foreach ($disciplines as $key => $value) {
+			$disciplines[$key] = $key.' - '.$value;
+		}
+		$professors = array();
+		$this->Schoolclass->Professor->recursive = 1;
+		$professorsAll = $this->Schoolclass->Professor->find('all',array('fields'=>'Professor.siape,User.name'));
+		foreach ($professorsAll as $key => $value) {
+			$professors[$value['Professor']['siape']] = $value['Professor']['siape'].'-'.$value['User']['name'];
+		}
+		$students = array();
+		$this->Schoolclass->Student->recursive = 1;
+		$studentsAll = $this->Schoolclass->Student->find('all',array('fields'=>'Student.enrolment,User.name'));
+		foreach ($studentsAll as $key => $value) {
+			$students[$value['Student']['enrolment']] = $value['Student']['enrolment'].'-'.$value['User']['name'];
+		}
 		$this->set(compact('disciplines', 'professors', 'students'));
 	}
 
@@ -68,16 +86,19 @@ class SchoolclassesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Schoolclass->save($this->request->data)) {
-				$this->setFlash(__('O(A) schoolclass foi salvo'));
+				$this->setFlash(__('O(A) turma foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) schoolclass não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) turma não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Schoolclass.' . $this->Schoolclass->primaryKey => $id));
 			$this->request->data = $this->Schoolclass->find('first', $options);
 		}
 		$disciplines = $this->Schoolclass->Discipline->find('list');
+		foreach ($disciplines as $key => $value) {
+			$disciplines[$key] = $key.' - '.$value;
+		}
 		$professors = $this->Schoolclass->Professor->find('list');
 		$students = $this->Schoolclass->Student->find('list');
 		$this->set(compact('disciplines', 'professors', 'students'));

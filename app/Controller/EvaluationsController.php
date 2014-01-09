@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Evaluation $Evaluation
  */
 class EvaluationsController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *
@@ -26,7 +30,7 @@ class EvaluationsController extends AppController {
  */
 	public function view($id = null) {
     $this->Evaluation->id = $id;
-		if (!$this->Evaluation->exists()) {
+		if (!$this->Evaluation->exists()||$this->Evaluation->Schoolclass->belongsToSchoolclass($this->getUserId(),$this->Evaluation->field('schoolclasse_id'))) {
 			throw new NotFoundException(__('evaluation inválido(a).'));
 		}
 		
@@ -42,10 +46,10 @@ class EvaluationsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Evaluation->create();
 			if ($this->Evaluation->save($this->request->data)) {
-				$this->setFlash(__('O(A) evaluation foi salvo'));
+				$this->setFlash(__('O(A) avaliação foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) evaluation não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) avaliação não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
 		$schoolclasses = $this->Evaluation->Schoolclasse->find('list');
@@ -67,10 +71,10 @@ class EvaluationsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Evaluation->save($this->request->data)) {
-				$this->setFlash(__('O(A) evaluation foi salvo'));
+				$this->setFlash(__('O(A) avaliação foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) evaluation não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) avaliação não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Evaluation.' . $this->Evaluation->primaryKey => $id));

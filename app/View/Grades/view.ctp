@@ -28,7 +28,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th><?php echo __('Schoolclasses Student'); ?></th>
+			<th><?php echo __('Schoolclasses Estudante'); ?></th>
 			<td>
 				<?php echo $this->Html->link($grade['SchoolclassesStudent']['id'], array('controller' => 'schoolclasses_students', 'action' => 'view', $grade['SchoolclassesStudent']['id'])); ?>
 				&nbsp;

@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Student $Student
  */
 class StudentsController extends AppController {
-
+	var $beforeFilter = array('canToAccess' => array(
+          'except' => array('index','view'),
+          'args' => array('redirect' => '/')
+      )
+  );
 /**
  * index method
  *
@@ -42,10 +46,10 @@ class StudentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Student->create();
 			if ($this->Student->save($this->request->data)) {
-				$this->setFlash(__('O(A) student foi salvo'));
+				$this->setFlash(__('O(A) estudante foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) student não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) estudante não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
 		$users = $this->Student->User->find('list');
@@ -67,10 +71,10 @@ class StudentsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Student->save($this->request->data)) {
-				$this->setFlash(__('O(A) student foi salvo'));
+				$this->setFlash(__('O(A) estudante foi salvo'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->setFlash(__('O(A) student não pôde ser salvo(a). Por favor, tente novamente.'));
+				$this->setFlash(__('O(A) estudante não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $primaryKey));

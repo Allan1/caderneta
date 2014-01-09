@@ -14,7 +14,7 @@ class Professor extends AppModel {
  * @var string
  */
 	public $primaryKey = 'siape';
-
+	public $displayField = 'siape';
 /**
  * Validation rules
  *
@@ -69,7 +69,7 @@ class Professor extends AppModel {
 		'Schoolclass' => array(
 			'className' => 'Schoolclass',
 			'joinTable' => 'professors_schoolclasses',
-			'foreignKey' => 'professor_id',
+			'foreignKey' => 'professor_siape',
 			'associationForeignKey' => 'schoolclasse_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',

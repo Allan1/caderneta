@@ -104,4 +104,17 @@ class AppController extends Controller {
       $this->redirect($redirect);
   }
 
+  public function setFlashAccessDenied($redirect = '/') {
+    $this->setFlashFailure ('Usuário sem permissão para acessar esse conteúdo.', $redirect);
+  }
+
+  public function canToAccess($args) {
+    $admin = $this->Session->read('Auth.User.admin');
+    if($admin)
+      return true;
+    if(isset($args['redirect']))
+      $this->setFlashAccessDenied ($args['redirect']);
+    return false;
+  }
+
 }
