@@ -56,6 +56,30 @@ class User extends AppModel {
 		),
 	);
   
+	
+/**
+ * hasOne associations
+ *
+ * @var array
+ */
+	public $hasOne = array(
+		'Student' => array(
+			'className' => 'Student',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Professor' => array(
+			'className' => 'Professor',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+
   public function beforeSave($options = array()) {
       $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
       return true;

@@ -14,9 +14,9 @@
         <table class="table table-striped ">
           <tr>
                       <th><?php echo $this->Paginator->sort('id'); ?></th>
-                      <th><?php echo $this->Paginator->sort('value'); ?></th>
-                      <th><?php echo $this->Paginator->sort('evaluation_id'); ?></th>
-                      <th><?php echo $this->Paginator->sort('schoolclasses_student_id'); ?></th>
+                      <th><?php echo $this->Paginator->sort('value','Valor'); ?></th>
+                      <th><?php echo $this->Paginator->sort('evaluation_id','Avaliação'); ?></th>
+                      <th><?php echo $this->Paginator->sort('schoolclasses_student_id','Relação Turma Estudante'); ?></th>
                       <th class="actions"><?php echo __('Ações'); ?></th>
           </tr>
           <?php foreach ($grades as $grade): ?>

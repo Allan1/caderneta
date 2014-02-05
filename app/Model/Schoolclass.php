@@ -130,30 +130,47 @@ class Schoolclass extends AppModel {
 			$this->id = $id;
 		}
 
-		if( 
+		if( $this->isProfessorOf($user_id) ||
 			$this->find('first',array(
-				'conditions'=>array('Professor.user_id'=>$user_id),
+				'conditions'=>array('Student.user_id'=>$user_id,'Schoolclass.id'=>$this->id),
 				'joins'=>array(
 					array(
-						'table'=>'professors',
-						'alias'=>'Professor',
-						'conditions'=>'Professor.siape = Schoolclass.professor_siape'
-					)
-				)
-			)) ||
-			$this->find('first',array(
-				'conditions'=>array('Student.user_id'=>$user_id),
-				'joins'=>array(
+						'table'=>'schoolclasses_students',
+						'alias'=>'SchoolclassesStudent',
+						'conditions'=>'SchoolclassesStudent.schoolclasse_id = Schoolclass.id'
+					),
 					array(
 						'table'=>'students',
 						'alias'=>'Student',
-						'conditions'=>'Student.enrolment = Schoolclass.student_enrolment'
+						'conditions'=>'Student.enrolment = SchoolclassesStudent.student_enrolment'
 					)
 				)
 			))
 		)
 			return true;
 		return false;
+	}
+
+	public function isProfessorOf($user_id,$id = null){
+		if ($id) {
+			$this->id = $id;
+		}
+		return $this->find('first',array(
+			'conditions'=>array('Professor.user_id'=>$user_id,'Schoolclass.id'=>$this->id),
+			'joins'=>array(
+				array(
+					'table'=>'professors_schoolclasses',
+					'alias'=>'ProfessorsSchoolclass',
+					'conditions'=>'ProfessorsSchoolclass.schoolclasse_id = Schoolclass.id'
+				),
+				array(
+					'table'=>'professors',
+					'alias'=>'Professor',
+					'conditions'=>'Professor.siape = ProfessorsSchoolclass.professor_siape'
+				)
+			)
+		));
+
 	}
 
 }

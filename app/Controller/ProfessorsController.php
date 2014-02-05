@@ -6,8 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Professor $Professor
  */
 class ProfessorsController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index','view'),
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('view'),
           'args' => array('redirect' => '/')
       )
   );
@@ -29,12 +29,19 @@ class ProfessorsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-    $this->Professor->id = $id;
-		if (!$this->Professor->exists()) {
-			throw new NotFoundException(__('professor inválido(a).'));
+		if(!$this->isAdmin()){
+			$professor = $this->Professor->User->isProfessor($this->getUserId());
+			if(!$professor)
+				$this->setFlashAccessDenied();
 		}
-		
-		$this->set('professor', $this->Professor->read());
+		else{
+			$this->Professor->id = $id;
+			if (!$this->Professor->exists()) {
+				throw new NotFoundException(__('professor inválido(a).'));
+			}
+			$professor = $this->Professor->read();
+		}    	
+		$this->set('professor', $professor);
 	}
 
 /**

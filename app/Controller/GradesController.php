@@ -6,8 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Grade $Grade
  */
 class GradesController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index','view'),
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('index','view','add','edit','delete'),
           'args' => array('redirect' => '/')
       )
   );
@@ -16,11 +16,16 @@ class GradesController extends AppController {
  *
  * @return void
  */
-	public function index($schoolclasses_student_id = null) {
-		$this->Grade->recursive = 0;
-		if($schoolclasses_student_id){
-			$this->paginate = array('conditions'=>array('Grade.schoolclasses_student_id'=>$schoolclasses_student_id));
+	public function index($schoolclasses_student_id) {
+		$this->Grade->SchoolclassesStudent->id = $schoolclasses_student_id;
+		if(!$this->Grade->SchoolclassesStudent->exists()){
+			throw new Exception("Relação inexistente", 1);			
 		}
+		$schoolclasse_id = $this->Grade->SchoolclassesStudent->field('schoolclasse_id');
+		if(!$schoolclasse_id || !$this->Grade->SchoolclassesStudent->Schoolclass->isProfessorOf($this->getUserId(),$schoolclasse_id))
+			$this->setFlashAccessDenied();
+		$this->Grade->recursive = 0;		
+		$this->paginate = array('conditions'=>array('Grade.schoolclasses_student_id'=>$schoolclasses_student_id));		
 		$this->set('schoolclasses_student_id', $schoolclasses_student_id);
 		$this->set('schoolclasses_student',$this->Grade->SchoolclassesStudent->read(null,$schoolclasses_student_id));
 		$this->set('grades', $this->paginate());
@@ -48,11 +53,19 @@ class GradesController extends AppController {
  * @return void
  */
 	public function add($schoolclasses_student_id = null) {
+		$this->Grade->SchoolclassesStudent->id = $schoolclasses_student_id;
+		if(!$this->Grade->SchoolclassesStudent->exists()){
+			throw new Exception("Relação inexistente", 1);			
+		}
+		$schoolclasse_id = $this->Grade->SchoolclassesStudent->field('schoolclasse_id');
+		if(!$schoolclasse_id || !$this->Grade->SchoolclassesStudent->Schoolclass->isProfessorOf($this->getUserId(),$schoolclasse_id))
+			$this->setFlashAccessDenied();
+
 		if ($this->request->is('post')) {
 			$this->Grade->create();
 			if ($this->Grade->save($this->request->data)) {
 				$this->setFlash(__('O(A) nota foi salvo'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index',$schoolclasses_student_id));
 			} else {
 				$this->setFlash(__('O(A) nota não pôde ser salvo(a). Por favor, tente novamente.'));
 			}

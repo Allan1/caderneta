@@ -44,8 +44,8 @@ class ProfessorsSchoolclass extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Schoolclasse' => array(
-			'className' => 'Schoolclasse',
+		'Schoolclass' => array(
+			'className' => 'Schoolclass',
 			'foreignKey' => 'schoolclasse_id',
 			'conditions' => '',
 			'fields' => '',

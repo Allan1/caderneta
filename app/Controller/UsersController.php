@@ -8,8 +8,8 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
-  var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index','login','logout','view'),
+  var $beforeFilter = array('isAdmin' => array(
+          'except' => array('login','logout','view'),
           'args' => array('redirect' => '/')
       )
   );
@@ -37,6 +37,7 @@ class UsersController extends AppController {
       throw new NotFoundException(__('Invalid usuário'));
     }
     $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+    $this->User->recursive = 0;
     $this->set('user', $this->User->find('first', $options));
   }
 
@@ -108,7 +109,7 @@ class UsersController extends AppController {
       if ($this->Auth->login()) {
         $this->redirect($this->Auth->redirect());
       } else {
-        debug(AuthComponent::password($this->request->data['User']['password']));
+        // debug(AuthComponent::password($this->request->data['User']['password']));
         $this->setFlashFailure(__('Email e/ou senha errados'));
       }
     }

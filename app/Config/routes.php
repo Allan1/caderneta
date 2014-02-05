@@ -52,7 +52,7 @@
   Router::connect ('/professores/editar/*', array('controller'=>'professors','action'=>'edit'));
   Router::connect ('/professores/adicionar/*', array('controller'=>'professors','action'=>'add'));
   
-  Router::connect ('/avaliacoes', array('controller'=>'evaluations','action'=>'index'));
+  Router::connect ('/avaliacoes/listar/*', array('controller'=>'evaluations','action'=>'index'));
   Router::connect ('/avaliacoes/apagar/*', array('controller'=>'evaluations','action'=>'delete'));
   Router::connect ('/avaliacoes/ver/*', array('controller'=>'evaluations','action'=>'view'));
   Router::connect ('/avaliacoes/editar/*', array('controller'=>'evaluations','action'=>'edit'));
@@ -64,23 +64,24 @@
   Router::connect ('/tidoDeAvaliacoes/editar/*', array('controller'=>'evaluationtypes','action'=>'edit'));
   Router::connect ('/tidoDeAvaliacoes/adicionar/*', array('controller'=>'evaluationtypes','action'=>'add'));
     
-  Router::connect ('/notas', array('controller'=>'grades','action'=>'index'));
+  Router::connect ('/notas/listar/*', array('controller'=>'grades','action'=>'index'));
   Router::connect ('/notas/apagar/*', array('controller'=>'grades','action'=>'delete'));
   Router::connect ('/notas/ver/*', array('controller'=>'grades','action'=>'view'));
   Router::connect ('/notas/editar/*', array('controller'=>'grades','action'=>'edit'));
   Router::connect ('/notas/adicionar/*', array('controller'=>'grades','action'=>'add'));
   
-  Router::connect ('/ministra', array('controller'=>'professors_schoolclasses','action'=>'index'));
+  Router::connect ('/ministra/listar/*', array('controller'=>'professors_schoolclasses','action'=>'index'));
   Router::connect ('/ministra/apagar/*', array('controller'=>'professors_schoolclasses','action'=>'delete'));
   Router::connect ('/ministra/ver/*', array('controller'=>'professors_schoolclasses','action'=>'view'));
   Router::connect ('/ministra/editar/*', array('controller'=>'professors_schoolclasses','action'=>'edit'));
   Router::connect ('/ministra/adicionar/*', array('controller'=>'professors_schoolclasses','action'=>'add'));
 
-  Router::connect ('/cursa', array('controller'=>'schoolclasses_students','action'=>'index'));
+  Router::connect ('/cursa/listar/*', array('controller'=>'schoolclasses_students','action'=>'index'));
   Router::connect ('/cursa/apagar/*', array('controller'=>'schoolclasses_students','action'=>'delete'));
   Router::connect ('/cursa/ver/*', array('controller'=>'schoolclasses_students','action'=>'view'));
   Router::connect ('/cursa/editar/*', array('controller'=>'schoolclasses_students','action'=>'edit'));
   Router::connect ('/cursa/adicionar/*', array('controller'=>'schoolclasses_students','action'=>'add'));
+  Router::connect ('/cursa/presenca/*', array('controller'=>'schoolclasses_students','action'=>'attendance'));
 
   Router::connect ('/disciplinas', array('controller'=>'disciplines','action'=>'index'));
   Router::connect ('/disciplinas/apagar/*', array('controller'=>'disciplines','action'=>'delete'));

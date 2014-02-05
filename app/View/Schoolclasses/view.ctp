@@ -35,21 +35,8 @@
 								</td>
 							</tr>
 						</table>
-						<p>Professores:</p>
-						<table class="table table-striped">
-							<tr>
-								<th>Siape</th>
-								<th>Nome</th>
-							</tr>
-							<?php foreach($schoolclass['Professor'] as $value):?>
-								<tr>
-									<td><?php echo $this->Html->link($value['siape'],array('controller'=>'professors','action'=>'view',$value['siape']))?></td>
-									<td><?php echo($value['User']['name'])?></td>
-								</tr>
-							<?php endforeach;?>
-						</table>
-
-						<?php echo $this->Html->link('Estudantes',array('controller'=>'schoolclasses_students','action'=>'index',$schoolclass['Schoolclass']['id']),array('class'=>'btn'));?>
+						<?php echo $this->Html->link('Professores',array('controller'=>'professors_schoolclasses','action'=>'index',$schoolclass['Schoolclass']['id']),array('class'=>'btn btn-primary btn-small'));?>
+						<?php echo $this->Html->link('Estudantes',array('controller'=>'schoolclasses_students','action'=>'index',$schoolclass['Schoolclass']['id']),array('class'=>'btn btn-primary btn-small'));?>
 						
       </div>
     </div>

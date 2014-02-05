@@ -8,9 +8,9 @@
         <?php echo $this->Form->create('Professor'); ?>
           <fieldset>
         	<?php
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('Schoolclass');
-	?>
+        		echo $this->Form->input('user_id',array('label'=>'Usuário'));
+            echo $this->Form->input('siape',array('type'=>'text'));
+        	?>
           </fieldset>
         <?php echo $this->Form->end(__('Enviar')); ?>
       </div>

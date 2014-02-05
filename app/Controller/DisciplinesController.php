@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property Discipline $Discipline
  */
 class DisciplinesController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
+	var $beforeFilter = array('isAdmin' => array(
           'except' => array('index','view'),
           'args' => array('redirect' => '/')
       )

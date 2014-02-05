@@ -51,7 +51,7 @@
             </ul>
             <ul class="nav">
               <li id="">
-                <?php echo $this->Html->link($this->Html->tag('i', '', array('class' => 'icon-home')) . ' início', array('controller' => 'pages', 'action' => 'home'), array('escape' => false)); ?>
+                <?php echo $this->Html->link($this->Html->tag('i', '', array('class' => 'icon-home')) . ' início', '/', array('escape' => false)); ?>
               </li>
             </ul>
           </div>
@@ -76,41 +76,36 @@
                     <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'users', 'action' => 'index')); ?></li>
                   </ul>
                 </li>                        
+                <li>
+                  <a href="#">Professores<i class="icon-chevron-down pull-right"></i></a>
+                  <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                    <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'professors', 'action' => 'index')); ?></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Estudantes<i class="icon-chevron-down pull-right"></i></a>
+                  <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                    <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'students', 'action' => 'index')); ?></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Turmas<i class="icon-chevron-down pull-right"></i></a>
+                  <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                    <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'schoolclasses', 'action' => 'index')); ?></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Tipos de Avaliações<i class="icon-chevron-down pull-right"></i></a>
+                  <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                    <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'evaluationtypes', 'action' => 'index')); ?></li>
+                  </ul>
+                </li>
               <?php endif;?>
-              <li>
-                <a href="#">Professores<i class="icon-chevron-down pull-right"></i></a>
-                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'professors', 'action' => 'index')); ?></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Estudantes<i class="icon-chevron-down pull-right"></i></a>
-                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'students', 'action' => 'index')); ?></li>
-                </ul>
-              </li>
+              
               <li>
                 <a href="#">Disciplinas<i class="icon-chevron-down pull-right"></i></a>
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
                   <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'disciplines', 'action' => 'index')); ?></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Turmas<i class="icon-chevron-down pull-right"></i></a>
-                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'schoolclasses', 'action' => 'index')); ?></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Avaliações<i class="icon-chevron-down pull-right"></i></a>
-                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'evaluations', 'action' => 'index')); ?></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Tipos de Avaliações<i class="icon-chevron-down pull-right"></i></a>
-                <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
-                  <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'evaluationtypes', 'action' => 'index')); ?></li>
                 </ul>
               </li>
             </ul>
@@ -128,7 +123,7 @@
                         <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
                         <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
                         <li>
-                          <?php echo $this->Html->link($this->Html->tag('i', '', array('class' => 'icon-home')) . ' Início', array('controller' => 'pages', 'action' => 'home'), array('escape' => false)); ?> <span class="divider">/</span>	
+                          <?php echo $this->Html->link($this->Html->tag('i', '', array('class' => 'icon-home')) . ' Início', '/', array('escape' => false)); ?> <span class="divider">/</span>	
                         </li>
                         <li class="active"><?php if (isset($label)) echo $label; ?></li>
                       </ul>
@@ -140,12 +135,12 @@
             <!--Content-->
             <?php echo $this->fetch('content'); ?>
             <!--/Content-->
-            <?php echo $this->element('sql_dump'); ?>
+            <?php //echo $this->element('sql_dump'); ?>
           </div>
         </div>
         <hr>
           <footer>
-            <center> 2013</center>
+            <center><?php echo(date('Y'));?> Todos os direitos reservados.</center>
           </footer>
       </div>
       <script>

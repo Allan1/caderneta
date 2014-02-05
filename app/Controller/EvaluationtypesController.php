@@ -6,8 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Evaluationtype $Evaluationtype
  */
 class EvaluationtypesController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index','view'),
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('view'),
           'args' => array('redirect' => '/')
       )
   );

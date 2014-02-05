@@ -14,7 +14,7 @@
 							</td>
 						</tr>
 						<tr>
-							<th><?php echo __('User'); ?></th>
+							<th><?php echo __('Usuário'); ?></th>
 							<td>
 								<?php echo $this->Html->link($professor['User']['name'], array('controller' => 'users', 'action' => 'view', $professor['User']['id'])); ?>
 								&nbsp;
@@ -35,8 +35,8 @@
 								<td><?php echo $value['discipline_code'];?></td>
 								<td><?php echo $value['code'];?></td>
 								<td>
-									<?php echo $this->Html->link('Ver',array('controller'=>'professors_schoolclasses','action'=>'view',$value['id']),array('class'=>'btn'));?>
-									<?php echo $this->Html->link('Estudantes',array('controller'=>'schoolclasses_students','action'=>'index',$value['id']),array('class'=>'btn'));?>
+									<?php echo $this->Html->link('Avaliações',array('controller'=>'evaluations','action'=>'index',$value['id']),array('class'=>'btn btn-primary btn-small'));?>
+									<?php echo $this->Html->link('Estudantes',array('controller'=>'schoolclasses_students','action'=>'index',$value['id']),array('class'=>'btn btn-primary btn-small'));?>
 								</td>
 							</tr>
 						<?php endforeach;?>

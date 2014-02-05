@@ -6,8 +6,8 @@ App::uses('AppController', 'Controller');
  * @property ProfessorsSchoolclass $ProfessorsSchoolclass
  */
 class ProfessorsSchoolclassesController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index','view'),
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('index'),
           'args' => array('redirect' => '/')
       )
   );
@@ -16,8 +16,13 @@ class ProfessorsSchoolclassesController extends AppController {
  *
  * @return void
  */
-	public function index() {
-		$this->ProfessorsSchoolclass->recursive = 0;
+	public function index($schoolclasse_id = null) {
+		$this->ProfessorsSchoolclass->recursive = 1;
+		if($schoolclasse_id){
+			$this->paginate = array('conditions'=>array('ProfessorsSchoolclass.schoolclasse_id'=>$schoolclasse_id));
+			$schoolclass = $this->ProfessorsSchoolclass->Schoolclasse->read(null,$schoolclasse_id);
+			$this->set(compact('schoolclass'));
+		}
 		$this->set('professorsSchoolclasses', $this->paginate());
 	}
 
@@ -42,12 +47,12 @@ class ProfessorsSchoolclassesController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($schoolclasse_id = null) {
 		if ($this->request->is('post')) {
 			$this->ProfessorsSchoolclass->create();
 			if ($this->ProfessorsSchoolclass->save($this->request->data)) {
 				$this->setFlash(__('O(A) relação de ministrar foi salvo'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index',$schoolclasse_id));
 			} else {
 				$this->setFlash(__('O(A) relação de ministrar não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
@@ -58,14 +63,16 @@ class ProfessorsSchoolclassesController extends AppController {
 		foreach ($schoolclassesAll as $key => $value) {
 			$schoolclasses[$value['Schoolclasse']['id']] = $value['Schoolclasse']['semester'].'-'.$value['Schoolclasse']['discipline_code'].'-'.$value['Schoolclasse']['code'];
 		}
-		
+		if($schoolclasse_id){
+			$value = $schoolclasses[$schoolclasse_id];
+			$schoolclasses = array($schoolclasse_id => $value);
+		}		
 		$this->ProfessorsSchoolclass->Professor->recursive = 1;
 		$professorsAll = $this->ProfessorsSchoolclass->Professor->find('all',array('fields'=>'Professor.siape,User.name'));
 		foreach ($professorsAll as $key => $value) {
 			$professors[$value['Professor']['siape']] = $value['Professor']['siape'].'-'.$value['User']['name'];
-		}
-		
-		$this->set(compact('schoolclasses', 'professors'));
+		}		
+		$this->set(compact('schoolclasses', 'professors','schoolclasse_id'));
 	}
 
 /**
@@ -112,7 +119,7 @@ class ProfessorsSchoolclassesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function delete($id = null, $schoolclasse_id = null) {
 		$this->ProfessorsSchoolclass->id = $id;
 		if (!$this->ProfessorsSchoolclass->exists()) {
 			throw new NotFoundException(__('professors schoolclass inválido(a).'));
@@ -120,9 +127,9 @@ class ProfessorsSchoolclassesController extends AppController {
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->ProfessorsSchoolclass->delete()) {
 			$this->setFlash(__('Professors schoolclass deletado(a)'));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect(array('action' => 'index',$schoolclasse_id));
 		}
 		$this->setFlash(__('Professors schoolclass não foi deletado(a)'));
-		$this->redirect(array('action' => 'index'));
+		$this->redirect(array('action' => 'index',$schoolclasse_id));
 	}
 }

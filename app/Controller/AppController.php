@@ -108,13 +108,20 @@ class AppController extends Controller {
     $this->setFlashFailure ('Usuário sem permissão para acessar esse conteúdo.', $redirect);
   }
 
-  public function canToAccess($args) {
+  public function isAdmin($args = array()) {
     $admin = $this->Session->read('Auth.User.admin');
     if($admin)
       return true;
     if(isset($args['redirect']))
       $this->setFlashAccessDenied ($args['redirect']);
     return false;
+  }
+
+  public function beforeRender() {
+    $this->set('isAdmin',$this->isAdmin());
+    $this->loadModel('Professor');
+    $prof = $this->Professor->find('first',array('conditions'=>array('Professor.user_id'=>$this->getUserId())));
+    $this->set('isProfessorOfSome',$prof);
   }
 
 }

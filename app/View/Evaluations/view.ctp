@@ -35,9 +35,9 @@
 			</td>
 		</tr>
 		<tr>
-			<th><?php echo __('Schoolclasse'); ?></th>
+			<th><?php echo __('Schoolclass'); ?></th>
 			<td>
-				<?php echo $this->Html->link($evaluation['Schoolclasse']['id'], array('controller' => 'schoolclasses', 'action' => 'view', $evaluation['Schoolclasse']['id'])); ?>
+				<?php echo $this->Html->link($evaluation['Schoolclass']['id'], array('controller' => 'schoolclasses', 'action' => 'view', $evaluation['Schoolclass']['id'])); ?>
 				&nbsp;
 			</td>
 		</tr>

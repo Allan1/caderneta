@@ -6,8 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Evaluation $Evaluation
  */
 class EvaluationsController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index'),
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('index','view','add','edit','delete'),
           'args' => array('redirect' => '/')
       )
   );
@@ -16,9 +16,11 @@ class EvaluationsController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function index($schoolclasse_id) {
 		$this->Evaluation->recursive = 0;
+		$this->paginate = array('conditions'=>array('Evaluation.schoolclasse_id'=>$schoolclasse_id));
 		$this->set('evaluations', $this->paginate());
+		$this->set(compact('schoolclasse_id'));
 	}
 
 /**
@@ -30,7 +32,7 @@ class EvaluationsController extends AppController {
  */
 	public function view($id = null) {
     $this->Evaluation->id = $id;
-		if (!$this->Evaluation->exists()||$this->Evaluation->Schoolclass->belongsToSchoolclass($this->getUserId(),$this->Evaluation->field('schoolclasse_id'))) {
+		if (!$this->Evaluation->exists() || !$this->Evaluation->Schoolclass->belongsToSchoolclass($this->getUserId(),$this->Evaluation->field('schoolclasse_id'))) {
 			throw new NotFoundException(__('evaluation inválido(a).'));
 		}
 		
@@ -42,17 +44,17 @@ class EvaluationsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($schoolclasse_id) {
 		if ($this->request->is('post')) {
 			$this->Evaluation->create();
 			if ($this->Evaluation->save($this->request->data)) {
 				$this->setFlash(__('O(A) avaliação foi salvo'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index',$schoolclasse_id));
 			} else {
 				$this->setFlash(__('O(A) avaliação não pôde ser salvo(a). Por favor, tente novamente.'));
 			}
 		}
-		$schoolclasses = $this->Evaluation->Schoolclasse->find('list');
+		$schoolclasses = $this->Evaluation->Schoolclass->find('list',array('conditions'=>array('Schoolclass.id'=>$schoolclasse_id)));
 		$evaluationtypes = $this->Evaluation->Evaluationtype->find('list');
 		$this->set(compact('schoolclasses', 'evaluationtypes'));
 	}

@@ -98,7 +98,7 @@ class Student extends AppModel {
 				),
 			)
 		));
-		debug($result);
+		// debug($result);
 	}
 
 }

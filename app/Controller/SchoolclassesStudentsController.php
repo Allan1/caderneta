@@ -7,18 +7,41 @@ App::uses('AppController', 'Controller');
  */
 class SchoolclassesStudentsController extends AppController {
 
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('index','attendance'),
+          'args' => array('redirect' => '/')
+    	)
+  	);
 /**
  * index method
  *
  * @return void
  */
-	public function index($schoolclasse_id = null) {
+	public function index($schoolclasse_id) {
 		$this->SchoolclassesStudent->recursive = 1;
-		if($schoolclasse_id){
-			$this->paginate = array('conditions'=>array('SchoolclassesStudent.schoolclasse_id'=>$schoolclasse_id));
-			$schoolclass = $this->SchoolclassesStudent->Schoolclasse->read(null,$schoolclasse_id);
-			$this->set(compact('schoolclass'));
+		$paginate = array(
+			'conditions'=>array(
+				'SchoolclassesStudent.schoolclasse_id'=>$schoolclasse_id				
+			)
+		);
+		if(!$this->isAdmin()){
+			$paginate['conditions']['Professor.user_id'] = $this->getUserId();
+			$paginate['joins'] = array(
+				array(
+					'table'=>'professors_schoolclasses',
+					'alias'=>'ProfessorsSchoolclasse',
+					'conditions'=>'SchoolclassesStudent.schoolclasse_id = ProfessorsSchoolclasse.schoolclasse_id'
+				),
+				array(
+					'table'=>'professors',
+					'alias'=>'Professor',
+					'conditions'=>'Professor.siape = ProfessorsSchoolclasse.professor_siape'
+				)
+			);
 		}
+		$this->paginate = $paginate;
+		$schoolclass = $this->SchoolclassesStudent->Schoolclass->read(null,$schoolclasse_id);
+		$this->set(compact('schoolclass'));
 		
 		$this->set('schoolclassesStudents', $this->paginate());
 	}
@@ -127,15 +150,15 @@ class SchoolclassesStudentsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
-	public function attendance($id=null){
+	public function attendance($id,$schoolclasse_id){
 		$this->SchoolclassesStudent->id = $id;
 		if (!$this->SchoolclassesStudent->exists()) {
-			throw new NotFoundException(__('schoolclasses student inválido(a).'));
+			throw new NotFoundException(__('Relação de cursar inválido(a).'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->SchoolclassesStudent->save($this->request->data)) {
 				$this->setFlash(__('O(A) relação de cursar foi salvo'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index',$schoolclasse_id));
 			} else {
 				$this->setFlash(__('O(A) relação de cursar não pôde ser salvo(a). Por favor, tente novamente.'));
 			}

@@ -6,8 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Schoolclass $Schoolclass
  */
 class SchoolclassesController extends AppController {
-	var $beforeFilter = array('canToAccess' => array(
-          'except' => array('index','view'),
+	var $beforeFilter = array('isAdmin' => array(
+          'except' => array('view'),
           'args' => array('redirect' => '/')
       )
   );
@@ -29,8 +29,11 @@ class SchoolclassesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-    $this->Schoolclass->id = $id;
-    $this->Schoolclass->recursive = 2;
+    	$this->Schoolclass->id = $id;
+		if(!$this->isAdmin() && !$this->Schoolclass->belongsToSchoolclass($this->getUserId())){
+			$this->setFlashAccessDenied();
+		}
+    	$this->Schoolclass->recursive = 2;
 		if (!$this->Schoolclass->exists()) {
 			throw new NotFoundException(__('schoolclass inválido(a).'));
 		}
