@@ -117,8 +117,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `cpf`, `admin`) VALUES
 (3, 'Fernando', 'nando@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '3', 0),
 (4, 'Admin', 'admin@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '4', 1),
 (5, 'Vaninha', 'vaninha@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '5', 0),
-(6, 'Rita Suzana', 'rita@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '12123', 0),
-(7, 'Flavio Assis', 'flavio@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '23434332', 0);
+(6, 'Rita', 'rita@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '12123', 0),
+(7, 'Flavio', 'flavio@gmail.com', '70f5d1dc3e07b6f61e9522c8b2f434d312d26666', '23434332', 0);
 SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

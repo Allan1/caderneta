@@ -71,6 +71,13 @@
             <ul class="nav nav-list bs-docs-sidenav nav-collapse">
               <?php if($this->Session->read('Auth.User.admin')):?>
                 <li>
+                  <a href="#">Relatórios<i class="icon-chevron-down pull-right"></i></a>
+                  <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
+                    <li  class="subitem"><?php echo $this->Html->link('Reprovados por Faltas', array('controller' => 'reports', 'action' => 'reprovedByPresence')); ?></li>
+                    <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'reports', 'action' => 'index')); ?></li>
+                  </ul>
+                </li>
+                <li>
                   <a href="#">Usuários<i class="icon-chevron-down pull-right"></i></a>
                   <ul class="nav nav-list bs-docs-sidenav nav-collapse submenu">
                     <li  class="subitem"><?php echo $this->Html->link('listar', array('controller' => 'users', 'action' => 'index')); ?></li>
