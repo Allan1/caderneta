@@ -1,3 +1,4 @@
+CREATE VIEW reprovado_por_falta AS 
 select 
 	`schoolclasses`.`discipline_code` AS `discipline_code`,
 	`schoolclasses`.`semester` AS `semester`,

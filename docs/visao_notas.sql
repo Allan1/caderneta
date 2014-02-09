@@ -1,3 +1,4 @@
+CREATE VIEW notas_allan AS 
 select 	
 	`schoolclasses`.`discipline_code` AS `discipline_code`,
 	`schoolclasses`.`semester` AS `semester`,
